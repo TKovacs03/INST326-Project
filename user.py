@@ -7,8 +7,11 @@ Contains code for the User object. Should be able to:
 '''
 import sys
 
+
 class User:
     #Initializing the users profile 
+    
+    
     
     def __init__(self,name,age,height,weight,gender):
         self.name = name
@@ -17,27 +20,21 @@ class User:
         self.weight = weight
         self.gender = gender
         
-     # Get user's personal information from command line arguments 
-    def add_user(self):
-        print("Please give your height in inches")
-        user_profile = {}
-        self.name = sys.argv[1]
-        self.age = int(sys.argv[2])
-        self.height = int(sys.argv[3])
-        if isinstance(self.height,str):
-            print("Please provide a number in inches for your height!") 
-        self.weight = int(sys.argv[4])
-        self.gender = sys.argv[5]
+args_dict = {}
+for arg in sys.argv[1:]:
+    value = arg.split(" ")
+    args_dict["Name"] = sys.argv[1]
+    args_dict["Age"] = sys.argv[2]
+    args_dict["Height"] = sys.argv[3]
+    args_dict["Weight"] = sys.argv[4]
+    args_dict["Gender"] = sys.argv[5]
+
+# Create User object with the provided information
+user = User(args_dict["Name"], int(args_dict["Age"]), int(args_dict["Height"]), int(args_dict["Weight"]), args_dict["Gender"])
+
+# Print the user's personal information
+print(f"Welcome, {user.name}! Your personal information has been saved.")
+print(f"You are {user.age} years old, {user.height} inches tall, and weigh {user.weight} pounds.")
+print(f"Your gender is {user.gender}.")
         
-        # Save the user's personal information to the dictionary
-        user_profile["Name"] = self.name
-        user_profile["Age"] = self.age
-        user_profile["Height"] = self.height
-        user_profile["Weight"] = self.weight
-        user_profile["Gender"] = self.gender
-       
-        # Print the user's personal information
-        print(f"Welcome, {self.name} Your personal information has been saved.")
-        print(f"You are {self.age} years old, {self.height} inches tall, and weigh {self.weight} pounds.")
-        print(f"Your gender is {self.gender}.")
-        
+    
