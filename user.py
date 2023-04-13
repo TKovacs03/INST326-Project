@@ -43,7 +43,7 @@ list_dict.append(user) #might need a repr method
 
       
 # Print the user's personal information
-print(f"Welcome, {user.name}! Your personal information has been saved.")
+print(f"Welcome, {user.name}! Your private data has been stored. The details you offered are as follows.")
 print(f"You are {user.age} years old, {user.height} inches tall, and weigh {user.weight} pounds.")
 print(f"Your gender is {user.gender}.")
 print(f"Your indicated that your workour level is {user.level}.")
