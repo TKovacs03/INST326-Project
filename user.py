@@ -10,9 +10,7 @@ import sys
 
 class User:
     #Initializing the users profile 
-    
-    
-    
+
     def __init__(self,name,age,height,weight,gender,level = None):
         self.name = name
         self.age = age
@@ -21,8 +19,19 @@ class User:
         self.gender = gender
         self.level = level
     
-    
+    def __repr__(self):
+            """Return a formal representation of the user object."""
+            return (
+            f"Name: {self.name}\n"
+            f"Age: {self.age}\n"
+            f"Height: {self.height}\n"
+            f"Weight: {self.weight}\n"
+            f"Gender: {self.gender}\n"
+            f"Level: {self.level}"
+                )
    
+
+
 list_dict = []        
 args_dict = {}
 for arg in sys.argv[1:]:
@@ -38,7 +47,8 @@ for arg in sys.argv[1:]:
 # Create User object with the provided information
 user = User(args_dict["Name"], int(args_dict["Age"]), int(args_dict["Height"]), 
             int(args_dict["Weight"]), args_dict["Gender"], args_dict["Level"])
-list_dict.append(user) #might need a repr method
+list_dict.append(user)
+
 
 
       
@@ -48,4 +58,5 @@ print(f"You are {user.age} years old, {user.height} inches tall, and weigh {user
 print(f"Your gender is {user.gender}.")
 print(f"Your indicated that your workour level is {user.level}.")
 print(list_dict)
+
     
