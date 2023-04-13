@@ -32,11 +32,6 @@ def workout_generator():
         "legs": ['squat', 'deadlift', 'leg press', 'lunges', 'calf raise'] 
     }
     
-    description = {
-        "push": " ",
-        "pull": " ",
-        "legs": " "
-    }
     
     # Ask user for workout choice:
     workout_type = input("What type of workout would you like? (push, pull, legs): ")
