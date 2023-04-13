@@ -1,5 +1,10 @@
 # INST326-Project
 Fitness Tracking app
 
-Be sure to communicate with group members about design choices and work to make sure 
-everyone is on the same page!
+Comments: 
+
+TJ: changing exercises from class object to a list of dictionaries, as there is no
+    advantage to making it's own data type.
+
+    I think we should maybe pivot and instead of making workout selection a method,
+    we should create a workout class. This would allow us to save information about each workout more conveniently. 

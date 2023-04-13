@@ -1,3 +1,6 @@
+import random
+
+
 '''Miscellaneous functions not included in either user or exercise file.
 Can also be used to write a preliminary main script for testing
 
@@ -19,3 +22,52 @@ Should contain:
     calorie tracker:
         
 '''
+# Define the exercises for each muscle group
+
+def workout_generator():
+    
+    workout_dict = {
+        "push": ['push-up', 'bench press', 'shoulder press', 'dips', 'tricep extensions'],
+        "pull": ['pull-up', 'lat pulldown', 'row', 'bicep curl', 'face pull'],
+        "legs": ['squat', 'deadlift', 'leg press', 'lunges', 'calf raise'] 
+    }
+    
+    
+    # Ask user for workout choice:
+    workout_type = input("What type of workout would you like? (push, pull, legs): ")
+    
+    if workout_type not in list(workout_dict):
+        raise ValueError("Your selection is not in the list")
+    
+    if workout_type == "push":
+        exercises = workout_dict["push"]
+    
+    elif workout_type == "pull":
+        exercises = workout_dict["pull"]
+    
+    else:
+        exercises = workout_dict["legs"]
+        
+    # Generate a workout consisting of a random number
+    num_exercises = random.randint(2, 4)
+    workout = list()
+    
+    for num in range(num_exercises):
+        exercise = random.choice(exercises)
+        num_sets = random.randint(4, 6)
+        reps = random.randint(15, 30)
+        weight = random.randint(35, 100)
+        workout.append((exercise, num_sets, reps, weight))
+    
+    
+    print("Your workout today:")
+    for exercise, num_set, reps, weight in workout:
+        print(f"{exercise} => {num_set} sets of {reps} reps at {weight} lbs")
+        
+    
+        
+
+    
+    
+    
+    

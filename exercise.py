@@ -1,8 +1,24 @@
 '''
-Contains exercise class, which reads information from a formatted file and creates a set of exercise objects 
-to be used in user class and workout selection, user display, etc. Each object has information about the exercise stored 
-in attributes.
-
-There will be a subclass, called user_exercise, that will be used to store user information about each exercise. 
-This will allow for users to save their information for each individual exercise. 
+Contains exercise function, which reads information from a csv of the following format:
+name, male beginner weight, female beginner weight, rep range, muscle group, description
+and creates a list of dictionaries containing every exercise and their attributes. 
 '''
+exercise_list = []
+def file_reader(file):
+    with open(file, 'r', encoding="UTF8") as f:
+        for line in f:
+            e_dict = {}
+            l = line.split(',')
+            e_dict['name'] = l[0]
+            e_dict['mweight'] = l[1]
+            e_dict['fweight'] = l[2]
+            e_dict['rep'] = l[3]
+            e_dict['group'] = l[4]    
+            e_dict['desc'] = l[5]        
+            exercise_list.append(e_dict)
+            
+file_reader('sample_exercise_data.csv')
+print(exercise_list)
+            
+            
+            
