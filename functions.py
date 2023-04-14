@@ -22,9 +22,16 @@ Should contain:
     calorie tracker:
         
 '''
-# Define the exercises for each muscle group
 
 def workout_generator():
+    """ A function that generates random workout base on user category.
+    
+    The function takes user name and workout category to generate random workout
+    
+    Side effects:
+        It prints to stdout user name and randomly selected workouts
+    
+    """
     
     workout_dict = {
         "push": ['push-up', 'bench press', 'shoulder press', 'dips', 'tricep extensions'],
@@ -34,7 +41,9 @@ def workout_generator():
     
     
     # Ask user for workout choice:
+    name = input("Enter your name full name, (eg: John Miles): ")
     workout_type = input("What type of workout would you like? (push, pull, legs): ")
+
     
     if workout_type not in list(workout_dict):
         raise ValueError("Your selection is not in the list")
@@ -60,14 +69,14 @@ def workout_generator():
         workout.append((exercise, num_sets, reps, weight))
     
     
-    print("Your workout today:")
+    print(f"\nHi! {name} your workout for today:")
     for exercise, num_set, reps, weight in workout:
         print(f"{exercise} => {num_set} sets of {reps} reps at {weight} lbs")
         
     
         
 
+
     
     
-    
-    
+
