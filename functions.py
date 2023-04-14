@@ -73,7 +73,40 @@ def workout_generator():
     for exercise, num_set, reps, weight in workout:
         print(f"{exercise} => {num_set} sets of {reps} reps at {weight} lbs")
         
+
+
+# BMR Calculation function and Total Calorie Intake function
+
+def BMR(gender, height, weight, age):
+    if gender == "Male":
+        bmr = ((12.7 * height) + (6.23 * weight) - (6.8 * age))
+        return bmr
     
+    if gender == "Female":
+        bmr = ((4.7 * height) + (4.35 * weight) - (4.7 * age))
+        return bmr
+    
+def total_cal_intake(bmr, active_level):
+    if active_level == "Little to None":
+        daily_cals = (bmr * 1.2)
+        return daily_cals
+    
+    elif active_level == "Lightly Active":
+        daily_cals = (bmr * 1.375)
+        return daily_cals
+    
+    elif active_level == "Moderately Active":
+        daily_cals = (bmr * 1.55)
+        return daily_cals
+    
+    elif active_level == "Very Active":
+        daily_cals = (bmr * 1.725)
+        return daily_cals
+    
+    else:
+        daily_cals = (bmr * 1.9)
+        return daily_cals
+
         
 
 
