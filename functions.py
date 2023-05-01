@@ -83,9 +83,8 @@ def BMR(gender, height, weight, age):
     
     bmr2 = ((4.7 * height) + (4.35 * weight) - (4.7 * age))
 
-    bmr1 if gender == "Male" else bmr2
-
-    
+    yourbmr = bmr1 if gender == "Male" else bmr2
+    return yourbmr
 def total_cal_intake(bmr, active_level):
     if active_level == "Little to None":
         daily_cals = (bmr * 1.2)
