@@ -5,7 +5,7 @@ and creates a list of dictionaries containing every exercise and their attribute
 '''
 exercise_list = []
 def file_reader(file):
-    with open(file, 'r', encoding="UTF8") as f:
+    with open(file, 'r', encoding="utf-8") as f:
         for line in f:
             e_dict = {}
             l = line.split(',')
