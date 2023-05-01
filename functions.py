@@ -144,7 +144,6 @@ def calorie_tracker(food, calories, done = False, goal = 2000):
         foodcals.clear
     
 
-
         
 
 
