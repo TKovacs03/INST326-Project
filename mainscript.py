@@ -24,7 +24,13 @@ def main(savefile = None):
             workout = functions.workout_generator(workout_type)
             print(workout)
         elif choice == 'track calories':
-            pass
+            bmr = functions.BMR(gender, height, weight, age)
+            calgoals = functions.total_cal_intake(bmr, level)
+            foodcals = {}
+            food = input("What food did you eat?")
+            calories = input("How many calories was it?")
+            doneornot = input("Are you done eating for the day(True/False)?")
+            functions.calorie_tracker(food, calories, calgoals, doneornot)
         elif choice == 'view history':
             if savefile:
                 #use save.past_workouts when finished
