@@ -78,13 +78,13 @@ def workout_generator():
 # BMR Calculation function and Total Calorie Intake function
 
 def BMR(gender, height, weight, age):
-    if gender == "Male":
-        bmr = ((12.7 * height) + (6.23 * weight) - (6.8 * age))
-        return bmr
     
-    if gender == "Female":
-        bmr = ((4.7 * height) + (4.35 * weight) - (4.7 * age))
-        return bmr
+    bmr1 = ((12.7 * height) + (6.23 * weight) - (6.8 * age))
+    
+    bmr2 = ((4.7 * height) + (4.35 * weight) - (4.7 * age))
+
+    bmr1 if gender == "Male" else bmr2
+
     
 def total_cal_intake(bmr, active_level):
     if active_level == "Little to None":
@@ -142,8 +142,6 @@ def calorie_tracker(food, calories, done = False, goal = 2000):
             print(f"{key}: {foodcals[key]} calories")
         print("You may have overeaten your calorie goal")
         foodcals.clear
-    
-
 
         
 
