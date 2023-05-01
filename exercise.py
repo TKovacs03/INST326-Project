@@ -17,8 +17,6 @@ def file_reader(file):
             e_dict['desc'] = l[5]        
             exercise_list.append(e_dict)
             
-file_reader('sample_exercise_data.csv')
-print(exercise_list)
-            
+
             
             

@@ -5,8 +5,8 @@ Framework:
 
 main script:
 1. ask if user would like to load save
-    yes: load save (set up user object from dict of attributes, use same excercise dictionary as last time)
-    no: ask user for attributes, and for exercise csv file
+    yes: load save
+    no: ask user for attributes, and for exercise csv file name
 
 2. ask user what they'd like to do:
 
