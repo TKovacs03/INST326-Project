@@ -142,60 +142,7 @@ def calorie_tracker(food, calories, done = False, goal = 2000):
             print(f"{key}: {foodcals[key]} calories")
         print("You may have overeaten your calorie goal")
         foodcals.clear
-#recommend any adjustments if class is not intuitive
-class Nutrition:
-        def __init__(self, gender, height, weight, age):
-            foodcals = {}
-            
-            bmr1 = ((12.7 * height) + (6.23 * weight) - (6.8 * age))
-    
-            bmr2 = ((4.7 * height) + (4.35 * weight) - (4.7 * age))
 
-            bmr1 if gender == "Male" else bmr2
-        
-        def total_cal_intake(bmr, active_level):
-            if active_level == "Little to None":
-                daily_cals = (bmr * 1.2)
-                return daily_cals
-    
-            elif active_level == "Lightly Active":
-                daily_cals = (bmr * 1.375)
-                return daily_cals
-    
-            elif active_level == "Moderately Active":
-                daily_cals = (bmr * 1.55)
-                return daily_cals
-    
-            elif active_level == "Very Active":
-                daily_cals = (bmr * 1.725)
-                return daily_cals
-    
-            else:
-                daily_cals = (bmr * 1.9)
-                return daily_cals
-        def calorie_tracker(food, calories, daily_cals, done = False):
-            foodcals[food] = calories
-            total_calories = sum(foodcals.values())
-            if total_calories < daily_cals:
-                for key in foodcals:
-                    print(f"{key}: {foodcals[key]} calories")
-            print(f"You still need to eat {daily_cals - total_calories} calories")
-            if done == True:
-                for key in foodcals:
-                    print(f"{key}: {foodcals[key]} calories")
-                print(f"You were {daily_cals - total_calories} calories short")
-            for key, value in foodcals:
-                foodcals.pop()
-            if daily_cals <= total_calories <= daily_cals + 200:
-                for key in foodcals:
-                    print(f"{key}: {foodcals[key]} calories")
-                print(f"You ate roughly your specified calorie count goal!")
-            foodcals.clear()
-            if daily_cals +200 < total_calories:
-                for key in foodcals:
-                    print(f"{key}: {foodcals[key]} calories")
-                print("You may have overeaten your calorie goal")
-                foodcals.clear
         
         
         
