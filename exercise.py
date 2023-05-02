@@ -5,7 +5,7 @@ and creates a list of dictionaries containing every exercise and their attribute
 '''
 exercise_list = []
 def file_reader(file):
-    with open(file, 'r', encoding="UTF8") as f:
+    with open(file, 'r', encoding="utf-8") as f:
         for line in f:
             e_dict = {}
             l = line.split(',')
@@ -17,8 +17,6 @@ def file_reader(file):
             e_dict['desc'] = l[5]        
             exercise_list.append(e_dict)
             
-file_reader('sample_exercise_data.csv')
-print(exercise_list)
-            
+
             
             

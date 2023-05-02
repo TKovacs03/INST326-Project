@@ -73,7 +73,78 @@ def workout_generator():
     for exercise, num_set, reps, weight in workout:
         print(f"{exercise} => {num_set} sets of {reps} reps at {weight} lbs")
         
+
+
+# BMR Calculation function and Total Calorie Intake function
+
+def BMR(gender, height, weight, age):
     
+    bmr1 = ((12.7 * height) + (6.23 * weight) - (6.8 * age))
+    
+    bmr2 = ((4.7 * height) + (4.35 * weight) - (4.7 * age))
+
+    yourbmr = bmr1 if gender == "Male" else bmr2
+    return yourbmr
+def total_cal_intake(bmr, active_level):
+    if active_level == "Little to None":
+        daily_cals = (bmr * 1.2)
+        return daily_cals
+    
+    elif active_level == "Lightly Active":
+        daily_cals = (bmr * 1.375)
+        return daily_cals
+    
+    elif active_level == "Moderately Active":
+        daily_cals = (bmr * 1.55)
+        return daily_cals
+    
+    elif active_level == "Very Active":
+        daily_cals = (bmr * 1.725)
+        return daily_cals
+    
+    else:
+        daily_cals = (bmr * 1.9)
+        return daily_cals
+#Alex Hildebrand Function   
+foodcals = {}
+def calorie_tracker(food, calories, done = False, goal = 2000):
+    """Allows you to see the foods you've eaten and their calories and updates you on where you
+    are at in reaching your calorie goal
+    Args:
+        food(str): What food you ate
+        calories(int): the calorie count for the corresponding food
+        goal(int, optional) = The amount of calories you want to have for the day, default is 2000
+        done(boolean, optional): Whether you are done eating for the day, default is False meaning not 
+        done
+    Returns: String of the foods and calories in the dictionary and how many more calories you need
+    to hit your goal
+    Side Effects: Prints to the console and changes global variable"""
+    foodcals[food] = calories
+    total_calories = sum(foodcals.values())
+    if total_calories < goal:
+        for key in foodcals:
+            print(f"{key}: {foodcals[key]} calories")
+        print(f"You still need to eat {goal - total_calories} calories")
+    if done == True:
+        for key in foodcals:
+            print(f"{key}: {foodcals[key]} calories")
+        print(f"You were {goal - total_calories} calories short")
+        for key in foodcals:
+            foodcals.pop()
+    if goal <= total_calories <= goal + 200:
+        for key in foodcals:
+            print(f"{key}: {foodcals[key]} calories")
+        print(f"You roughly ate your specified calorie count goal!")
+        foodcals.clear()
+    if goal +200 < total_calories:
+        for key in foodcals:
+            print(f"{key}: {foodcals[key]} calories")
+        print("You may have overeaten your calorie goal")
+        foodcals.clear
+
+        
+        
+        
         
 
 
