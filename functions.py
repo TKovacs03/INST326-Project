@@ -85,20 +85,21 @@ def BMR(gender, height, weight, age):
 
     yourbmr = bmr1 if gender == "Male" else bmr2
     return yourbmr
-def total_cal_intake(bmr, active_level):
-    if active_level == "Little to None":
+
+def total_cal_intake(bmr, level):
+    if level == "Little to None":
         daily_cals = (bmr * 1.2)
         return daily_cals
     
-    elif active_level == "Lightly Active":
+    elif level == "Lightly Active":
         daily_cals = (bmr * 1.375)
         return daily_cals
     
-    elif active_level == "Moderately Active":
+    elif level == "Moderately Active":
         daily_cals = (bmr * 1.55)
         return daily_cals
     
-    elif active_level == "Very Active":
+    elif level == "Very Active":
         daily_cals = (bmr * 1.725)
         return daily_cals
     
