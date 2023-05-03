@@ -46,3 +46,7 @@ def main(savefile = None):
             break
         else:
             raise ValueError('incorrect input')
+        
+
+if __name__ == "__main__":
+    main()
