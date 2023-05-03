@@ -8,7 +8,7 @@ def file_reader(file):
     with open(file, 'r', encoding="utf-8") as f:
         for line in f:
             e_dict = {}
-            l = line.split(',')
+            l = line.split(';')
             e_dict['name'] = l[0]
             e_dict['mweight'] = l[1]
             e_dict['fweight'] = l[2]
