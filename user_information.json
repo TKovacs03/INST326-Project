@@ -1,0 +1,34 @@
+{
+    "Gordon": {
+        "name": "Gordon",
+        "age": 264,
+        "height": 67,
+        "weight": 154,
+        "gender": "male",
+        "active_level": "beginner"
+    },
+    "Ewura": {
+        "name": "Ewura",
+        "age": 24,
+        "height": 67,
+        "weight": 154,
+        "gender": "female",
+        "active_level": "beginner"
+    },
+    "Emily": {
+        "name": "Emily",
+        "age": 24,
+        "height": 67,
+        "weight": 154,
+        "gender": "female",
+        "active_level": "beginner"
+    },
+    "Ronald": {
+        "name": "Ronald",
+        "age": 24,
+        "height": 67,
+        "weight": 154,
+        "gender": "female",
+        "active_level": "beginner"
+    }
+}
