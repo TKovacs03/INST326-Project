@@ -1,6 +1,6 @@
 import functions
 import exercise
-import user
+from user import User
 import save
 
 
@@ -15,7 +15,7 @@ def main(savefile = None):
         weight = input('Weight?\n')
         gender = input('Gender?\n')
         level = input('Level of exercise experience (novice, intermediate, expert)\n')
-        main_user = user.User(name, age, height, weight, gender, level)
+        main_user = User(name, age, height, weight, gender, level)
     
     while True:
         choice = input('What would you like to do? (workout, view history, track calories, save, or end)')
