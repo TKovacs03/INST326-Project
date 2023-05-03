@@ -21,7 +21,7 @@ def main(exercise_file, savefile = None):
         choice = input('What would you like to do? (workout, view history, track calories, save, or end)')
         if choice == 'workout':
             workout_type = input('What kind of workout? (push, pull, or legs)')
-            workout = functions.workout_generator(workout_type, exercise_file   )
+            workout = functions.workout_generator(workout_type, exercise_file)
             print(workout)
         elif choice == 'track calories':
             bmr = functions.BMR(gender, height, weight, age)

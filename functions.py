@@ -40,7 +40,7 @@ def workout_generator(workout_type, workout_list):
     
     """
     
-    workout_types = ['push, pull, legs']
+    workout_types = ['push', 'pull', 'legs']
     
     desc = {
         "push-up": """
