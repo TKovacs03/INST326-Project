@@ -228,7 +228,7 @@ def total_cal_intake(bmr, active_level):
     
 #Alex Hildebrand Function   
 foodcals = {}
-def calorie_tracker(food, calories, done = False, goal = 2000):
+def calorie_tracker(food, calories, goal, done = "No"):
     """Allows you to see the foods you've eaten and their calories and updates you on where you
     are at in reaching your calorie goal
     Args:
@@ -246,12 +246,11 @@ def calorie_tracker(food, calories, done = False, goal = 2000):
         for key in foodcals:
             print(f"{key}: {foodcals[key]} calories")
         print(f"You still need to eat {goal - total_calories} calories")
-    if done == True:
+    if done == "Yes":
         for key in foodcals:
             print(f"{key}: {foodcals[key]} calories")
         print(f"You were {goal - total_calories} calories short")
-        for key in foodcals:
-            foodcals.pop()
+        foodcals.clear()
     if goal <= total_calories <= goal + 200:
         for key in foodcals:
             print(f"{key}: {foodcals[key]} calories")
@@ -263,7 +262,9 @@ def calorie_tracker(food, calories, done = False, goal = 2000):
         print("You may have overeaten your calorie goal")
         foodcals.clear
 
-        
+
+
+       
         
         
         
