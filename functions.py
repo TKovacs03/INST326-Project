@@ -25,9 +25,12 @@ Should contain:
 
 def workout_generator(workout_type):
     """ A function that generates random workout base on user category.
+    This function takes user workout category to generate random workout.
     
-    The function takes user workout category to generate random workout
     
+    Args:
+        workout_type (str): it takes a workout selection of pull, push or legs
+
     Returns:
         sets (int): The number of exercise set the user performs
         reps (int): The number of repetitions a user performs within a set
