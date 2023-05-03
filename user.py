@@ -23,44 +23,37 @@ class User:
         )
 
 
-def user_information(name, age, height, weight, gender, active_level = None):
-    
-    with open("user_information.json", "r") as f:
-        users_output = json.load(f)
+    def user_information(self):
         
- 
-    
-    user = User(name, age, height, weight, gender, active_level)
-    print(f"Welcome, {user.name}! Your private data has been stored. The details you offered are as follows.")
-    print(f"You are {user.age} years old, {user.height} inches tall, and weigh {user.weight} pounds.")
-    print(f"Your gender is {user.gender}.")
-    print(f"You indicated that your workout level is {user.active_level}.")
-    if name in users_output:
-        return user
-
-    else:
-    
-    
-
-    
-        user_dict = {
-            "name": user.name,
-            "age": user.age,
-            "height": user.height,
-            "weight": user.weight,
-            "gender": user.gender,
-            "active_level": user.active_level,
-            }
-    
-        users_output = {"Users"}
         with open("user_information.json", "r") as f:
             users_output = json.load(f)
         
-        users_output[user.name] = user_dict
-    
-        with open("user_information.json", "w") as f:
-            json.dump(users_output, f, indent = 4)
-        return user
+        print(f"Welcome, {self.name}! Your private data has been stored. The details you offered are as follows.")
+        print(f"You are {self.age} years old, {self.height} inches tall, and weigh {self.weight} pounds.")
+        print(f"Your gender is {self.gender}.")
+        print(f"You indicated that your workout level is {self.active_level}.")
+        if self.name in users_output:
+            return user
+
+        else:
+            user_dict = {
+                "name": self.name,
+                "age": self.age,
+                "height": self.height,
+                "weight": self.weight,
+                "gender": self.gender,
+                "active_level": self.active_level,
+                }
+        
+            users_output = {"Users"}
+            with open("user_information.json", "r") as f:
+                users_output = json.load(f)
+            
+            users_output[self.name] = user_dict
+        
+            with open("user_information.json", "w") as f:
+                json.dump(users_output, f, indent = 4)
+            return self
         
 
         
@@ -92,4 +85,5 @@ def parse_args():
 
 if __name__ == "__main__":
     args = parse_args()
-    user_information(args.name, args.age, args.height, args.weight, args.gender, args.active_level)
+    user = User(args.name, args.age, args.height, args.weight, args.gender, args.active_level)
+    user.user_information()
