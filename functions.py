@@ -207,15 +207,15 @@ def total_cal_intake(bmr, active_level):
         daily_cals = (bmr * 1.2)
         return daily_cals
     
-    elif level == "Lightly Active":
+    elif active_level == "Lightly Active":
         daily_cals = (bmr * 1.375)
         return daily_cals
     
-    elif level == "Moderately Active":
+    elif active_level == "Moderately Active":
         daily_cals = (bmr * 1.55)
         return daily_cals
     
-    elif level == "Very Active":
+    elif active_level == "Very Active":
         daily_cals = (bmr * 1.725)
         return daily_cals
     
