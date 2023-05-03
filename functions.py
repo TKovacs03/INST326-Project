@@ -1,4 +1,5 @@
 import random
+import exercise
 
 
 '''Miscellaneous functions not included in either user or exercise file.
@@ -23,7 +24,7 @@ Should contain:
         
 '''
 
-def workout_generator(workout_type):
+def workout_generator(workout_type, workout_list):
     """ A function that generates random workout base on user category.
     This function takes user workout category to generate random workout.
     
@@ -39,11 +40,7 @@ def workout_generator(workout_type):
     
     """
     
-    workout_dict = {
-        "push": ['push-up', 'bench press', 'shoulder press', 'dips'],
-        "pull": ['pull-up', 'lat pulldown', 'row', 'bicep curl'],
-        "legs": ['squat', 'deadlift', 'leg press', 'lunges'] 
-    }
+    workout_types = ['push, pull, legs']
     
     desc = {
         "push-up": """
@@ -163,34 +160,19 @@ def workout_generator(workout_type):
     
 
     
-    if workout_type not in list(workout_dict):
-        raise ValueError("Your selection is not in the list")
+    if workout_type not in workout_types:
+        raise ValueError("incorrect input")
     
-    if workout_type == "push":
-        exercises = workout_dict["push"]
+    exercise_options = [w for w in workout_list if w['group'] == workout_type]
     
-    elif workout_type == "pull":
-        exercises = workout_dict["pull"]
-    
-    elif workout_type == "legs":
-        exercises = workout_dict["legs"]
         
-    # Generate a workout consisting of a random number
-    num_exercises = random.randint(3, 5)
-    workout = list()
+    workout = []
+    while len(workout) < 3:
+        exercise = random.choice(exercise_options)
+        if exercise not in workout:
+            workout.append(exercise)
     
-    for num in range(num_exercises):
-        exercise = random.choice(exercises)
-        num_sets = random.randint(4, 6)
-        reps = random.randint(15, 30)
-        weight = random.randint(35, 100)
-        workout.append((exercise, num_sets, reps, weight))
-    
-    
-    for exercise, num_set, reps, weight in workout:
-        return (f"Your workout today: "\
-            f"{exercise} => {num_set} sets of {reps} reps at {weight} lbs"\
-                f"{desc[exercise]}")
+    return workout
         
 
 

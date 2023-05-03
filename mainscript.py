@@ -4,7 +4,7 @@ from user import User
 import save
 
 
-def main(savefile = None):
+def main(exercise_file, savefile = None):
     '''execute the workout tracker program.'''
     if savefile:
         pass
@@ -21,7 +21,7 @@ def main(savefile = None):
         choice = input('What would you like to do? (workout, view history, track calories, save, or end)')
         if choice == 'workout':
             workout_type = input('What kind of workout? (push, pull, or legs)')
-            workout = functions.workout_generator(workout_type)
+            workout = functions.workout_generator(workout_type, exercise_file   )
             print(workout)
         elif choice == 'track calories':
             bmr = functions.BMR(gender, height, weight, age)
