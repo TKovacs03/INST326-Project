@@ -4,7 +4,7 @@ import re
 def new_save(fname, workout, user):
     '''create new .txt save file'''
     with open(f"{fname}.txt", "w") as f:
-        f.write(f"user info: {user.name}, {user.age}, {user.height}, {user.weight}, {user.gender}, {user.level}\n")
+        f.write(f"user info: {user.name}, {user.age}, {user.height}, {user.weight}, {user.gender}, {user.active_level}\n")
         names = [exercise['name'] for exercise in workout]
         f.write(f"Date:{date.today()} Exercises: {names}\n")
 

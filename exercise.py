@@ -10,8 +10,8 @@ def file_reader(file):
             e_dict = {}
             l = line.split(';')
             e_dict['name'] = l[0]
-            e_dict['mweight'] = l[1]
-            e_dict['fweight'] = l[2]
+            e_dict['m'] = l[1]
+            e_dict['f'] = l[2]
             e_dict['rep'] = l[3]
             e_dict['group'] = l[4]    
             e_dict['desc'] = l[5]        

@@ -1,5 +1,5 @@
 import functions
-import exercise
+from exercise import file_reader
 from user import User
 import save
 
@@ -18,11 +18,15 @@ def main(exercise_file, savefile = None):
         main_user = User(name, age, height, weight, gender, level)
     
     while True:
-        choice = input('What would you like to do? (workout, view history, track calories, save, or end)')
+        choice = input('What would you like to do? (workout, view history, track calories, save, or end)\n')
         if choice == 'workout':
-            workout_type = input('What kind of workout? (push, pull, or legs)')
-            workout = functions.workout_generator(workout_type, exercise_file)
-            print(workout)
+            workout_type = input('What kind of workout? (push, pull, or legs)\n')
+            print("Your workout is as follows:\n")
+            workout = functions.workout_generator(workout_type, file_reader(exercise_file))
+            for w in workout:
+                print(f"{w['name']}: {w[main_user.gender]}lbs {w['rep']}\n {w['desc']}")
+           
+            
         elif choice == 'track calories':
             bmr = functions.BMR(gender, height, weight, age)
             calgoals = functions.total_cal_intake(bmr, level)
@@ -41,12 +45,16 @@ def main(exercise_file, savefile = None):
                     save.past_workouts(savefile)
                 else:
                     save.past_workouts(savefile, spec_day = hist_choice)
+            else:
+                print('No preexisting save')
         elif choice == 'save':
             if savefile:
                 save.add_save(savefile, workout)
+                break
             else:
                 fname = input('what would you like to name your file?\n')
                 save.new_save(fname, workout, main_user)
+                break
         elif choice == 'end':
             print('Goodbye!')
             break
@@ -55,4 +63,4 @@ def main(exercise_file, savefile = None):
         
 
 if __name__ == "__main__":
-    main()
+    main('sample_exercise_data.csv')

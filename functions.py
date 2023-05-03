@@ -163,11 +163,11 @@ def workout_generator(workout_type, workout_list):
     if workout_type not in workout_types:
         raise ValueError("incorrect input")
     
-    exercise_options = [w for w in workout_list if w['group'] == workout_type]
+    exercise_options =  [w for w in workout_list if w['group'] == workout_type]
     
         
     workout = []
-    while len(workout) < 3:
+    while len(workout) < 1:
         exercise = random.choice(exercise_options)
         if exercise not in workout:
             workout.append(exercise)
