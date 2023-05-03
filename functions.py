@@ -1,4 +1,5 @@
 import random
+import exercise
 
 
 '''Miscellaneous functions not included in either user or exercise file.
@@ -23,7 +24,7 @@ Should contain:
         
 '''
 
-def workout_generator(workout_type):
+def workout_generator(workout_type, workout_list):
     """ A function that generates random workout base on user category.
     This function takes user workout category to generate random workout.
     
@@ -39,11 +40,7 @@ def workout_generator(workout_type):
     
     """
     
-    workout_dict = {
-        "push": ['push-up', 'bench press', 'shoulder press', 'dips'],
-        "pull": ['pull-up', 'lat pulldown', 'row', 'bicep curl'],
-        "legs": ['squat', 'deadlift', 'leg press', 'lunges'] 
-    }
+    workout_types = ['push', 'pull', 'legs']
     
     desc = {
         "push-up": """
@@ -163,72 +160,76 @@ def workout_generator(workout_type):
     
 
     
-    if workout_type not in list(workout_dict):
-        raise ValueError("Your selection is not in the list")
+    if workout_type not in workout_types:
+        raise ValueError("incorrect input")
     
-    if workout_type == "push":
-        exercises = workout_dict["push"]
+    exercise_options = [w for w in workout_list if w['group'] == workout_type]
     
-    elif workout_type == "pull":
-        exercises = workout_dict["pull"]
-    
-    elif workout_type == "legs":
-        exercises = workout_dict["legs"]
         
-    # Generate a workout consisting of a random number
-    num_exercises = random.randint(3, 5)
-    workout = list()
+    workout = []
+    while len(workout) < 3:
+        exercise = random.choice(exercise_options)
+        if exercise not in workout:
+            workout.append(exercise)
     
-    for num in range(num_exercises):
-        exercise = random.choice(exercises)
-        num_sets = random.randint(4, 6)
-        reps = random.randint(15, 30)
-        weight = random.randint(35, 100)
-        workout.append((exercise, num_sets, reps, weight))
-    
-    
-    for exercise, num_set, reps, weight in workout:
-        return (f"Your workout today: "\
-            f"{exercise} => {num_set} sets of {reps} reps at {weight} lbs"\
-                f"{desc[exercise]}")
+    return workout
         
 
 
 # BMR Calculation function and Total Calorie Intake function
 
 def BMR(gender, height, weight, age):
-    
-    bmr1 = ((12.7 * height) + (6.23 * weight) - (6.8 * age))
-    
-    bmr2 = ((4.7 * height) + (4.35 * weight) - (4.7 * age))
+    """Allows for a user to have their Basal Metabolic Rate (BMR) calculated utilizing user information from User class.
+    Args:
+        gender: the user's specified gender
+        height: the user's specified height
+        weight: the user's specified weight
+        age: the user's specified age
+    Side effects:
 
-    yourbmr = bmr1 if gender == "Male" else bmr2
+    Returns:
+        BMR based off of user's gender, weight, height, and age
+    """
+    bmr1 = ((12.70 * height) + (6.23 * weight) - (6.80 * age))
+    
+    bmr2 = ((4.70 * height) + (4.35 * weight) - (4.70 * age))
+
+    yourbmr = bmr1 if gender == "Male" else bmr2 #utilizes conditional expression skill
     return yourbmr
 
-def total_cal_intake(bmr, active_level):
-    if active_level == "Little to None":
-        daily_cals = (bmr * 1.2)
+def total_cal_intake(bmr, level):
+    """Calculates the recommended daily caloric intake amount necessary for a user utilizing their BMR and their activity level.
+    Args:
+        bmr: Basal Metabolic Rate (BMR) of the user
+        level: the average level of activity user partakes in on a weekly basis
+    Side effects:
+
+    Returns:
+        the recommended daily calories necessary for user based on their activity level
+    """
+    if level == "Little to None":
+        daily_cals = (bmr * 1.200)
         return daily_cals
     
-    elif active_level == "Lightly Active":
+    if level == "Lightly Active":
         daily_cals = (bmr * 1.375)
         return daily_cals
     
-    elif active_level == "Moderately Active":
-        daily_cals = (bmr * 1.55)
+    if level == "Moderately Active":
+        daily_cals = (bmr * 1.550)
         return daily_cals
     
-    elif active_level == "Very Active":
+    if level == "Very Active":
         daily_cals = (bmr * 1.725)
         return daily_cals
     
-    else:
-        daily_cals = (bmr * 1.9)
+    if level == "Extremely Active":
+        daily_cals = (bmr * 1.900)
         return daily_cals
     
 #Alex Hildebrand Function   
 foodcals = {}
-def calorie_tracker(food, calories, done = False, goal = 2000):
+def calorie_tracker(food, calories, goal, done = "No"):
     """Allows you to see the foods you've eaten and their calories and updates you on where you
     are at in reaching your calorie goal
     Args:
@@ -246,12 +247,11 @@ def calorie_tracker(food, calories, done = False, goal = 2000):
         for key in foodcals:
             print(f"{key}: {foodcals[key]} calories")
         print(f"You still need to eat {goal - total_calories} calories")
-    if done == True:
+    if done == "Yes":
         for key in foodcals:
             print(f"{key}: {foodcals[key]} calories")
         print(f"You were {goal - total_calories} calories short")
-        for key in foodcals:
-            foodcals.pop()
+        foodcals.clear()
     if goal <= total_calories <= goal + 200:
         for key in foodcals:
             print(f"{key}: {foodcals[key]} calories")
@@ -263,7 +263,9 @@ def calorie_tracker(food, calories, done = False, goal = 2000):
         print("You may have overeaten your calorie goal")
         foodcals.clear
 
-        
+
+
+       
         
         
         
