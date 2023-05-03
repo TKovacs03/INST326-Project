@@ -30,5 +30,13 @@
         "weight": 154,
         "gender": "female",
         "active_level": "beginner"
+    },
+    "tj": {
+        "name": "tj",
+        "age": 20,
+        "height": 6,
+        "weight": 180,
+        "gender": "m",
+        "active_level": "intermediate"
     }
 }

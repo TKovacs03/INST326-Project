@@ -1,59 +1,43 @@
 import functions
 from exercise import file_reader
-from user import User
+import user
 import save
 
 
-def main(exercise_file, savefile = None):
+def main(user):
     '''execute the workout tracker program.'''
-    if savefile:
-        pass
-    else:
-        name = input('What is your name?\n')
-        age = input('What is your age\n')
-        height = input('Your height?\n')
-        weight = input('Weight?\n')
-        gender = input('Gender?\n')
-        level = input('Level of exercise experience (novice, intermediate, expert)\n')
-        main_user = User(name, age, height, weight, gender, level)
-    
     while True:
         choice = input('What would you like to do? (workout, view history, track calories, save, or end)\n')
         if choice == 'workout':
+            exercise_file = input('What is the name of your exercise file?\n')
             workout_type = input('What kind of workout? (push, pull, or legs)\n')
             print("Your workout is as follows:\n")
             workout = functions.workout_generator(workout_type, file_reader(exercise_file))
             for w in workout:
-                print(f"{w['name']}: {w[main_user.gender]}lbs {w['rep']}\n {w['desc']}")
+                print(f"{w['name']}: {w[user.gender]}lbs {w['rep']}\n {w['desc']}")
            
-            
         elif choice == 'track calories':
-            bmr = functions.BMR(gender, height, weight, age)
-            calgoals = functions.total_cal_intake(bmr, level)
+            bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
+            calgoals = functions.total_cal_intake(bmr, user.level)
             foodcals = {}
             food = input("What food did you eat?")
             calories = input("How many calories was it?")
             doneornot = input("Are you done eating for the day(True/False)?")
             functions.calorie_tracker(food, calories, calgoals, doneornot)
         elif choice == 'bmr':
-            bmr = functions.BMR(gender, height, weight, age)
+            bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
             print(bmr)
         elif choice == 'view history':
-            if savefile:
-                hist_choice = input("type date in YYYY-MM-DD format for specifc day, or type 'all' for total history.")
-                if hist_choice == 'all':
-                    save.past_workouts(savefile)
-                else:
-                    save.past_workouts(savefile, spec_day = hist_choice)
-            else:
+            try:
+                save.past_workouts(user.name)
+            except:
                 print('No preexisting save')
         elif choice == 'save':
-            if savefile:
-                save.add_save(savefile, workout)
+            try:
+                save.add_save(user.name, workout)
                 break
-            else:
-                fname = main_user.name
-                save.new_save(fname, workout, main_user)
+            except:
+                save.new_save(user.name, workout)
                 break
         elif choice == 'end':
             print('Goodbye!')
@@ -63,4 +47,6 @@ def main(exercise_file, savefile = None):
         
 
 if __name__ == "__main__":
-    main('sample_exercise_data.csv')
+    args = user.parse_args()
+    main(user.user_information(args.name, args.age, args.height, args.weight, args.gender, args.active_level))
+        

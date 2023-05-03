@@ -28,36 +28,39 @@ def user_information(name, age, height, weight, gender, active_level = None):
     with open("user_information.json", "r") as f:
         users_output = json.load(f)
         
-    while name in users_output:
-        print("Name is taken, please enter a different name.")
-        name = input("Name: ")
+ 
     
     user = User(name, age, height, weight, gender, active_level)
     print(f"Welcome, {user.name}! Your private data has been stored. The details you offered are as follows.")
     print(f"You are {user.age} years old, {user.height} inches tall, and weigh {user.weight} pounds.")
     print(f"Your gender is {user.gender}.")
     print(f"You indicated that your workout level is {user.active_level}.")
-    print(user)
+    if name in users_output:
+        return user
+
+    else:
+    
     
 
     
-    user_dict = {
-        "name": user.name,
-        "age": user.age,
-        "height": user.height,
-        "weight": user.weight,
-        "gender": user.gender,
-        "active_level": user.active_level,
-    }
+        user_dict = {
+            "name": user.name,
+            "age": user.age,
+            "height": user.height,
+            "weight": user.weight,
+            "gender": user.gender,
+            "active_level": user.active_level,
+            }
     
-    users_output = {"Users"}
-    with open("user_information.json", "r") as f:
-        users_output = json.load(f)
+        users_output = {"Users"}
+        with open("user_information.json", "r") as f:
+            users_output = json.load(f)
         
-    users_output[user.name] = user_dict
+        users_output[user.name] = user_dict
     
-    with open("user_information.json", "w") as f:
-        json.dump(users_output, f, indent = 4)
+        with open("user_information.json", "w") as f:
+            json.dump(users_output, f, indent = 4)
+        return user
         
 
         
