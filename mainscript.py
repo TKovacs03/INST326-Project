@@ -1,6 +1,6 @@
 import functions
 import exercise
-import user
+from user import User
 import save
 
 
@@ -15,7 +15,7 @@ def main(savefile = None):
         weight = input('Weight?\n')
         gender = input('Gender?\n')
         level = input('Level of exercise experience (novice, intermediate, expert)\n')
-        main_user = user.User(name, age, height, weight, gender, level)
+        main_user = User(name, age, height, weight, gender, level)
     
     while True:
         choice = input('What would you like to do? (workout, view history, track calories, save, or end)')
@@ -31,10 +31,16 @@ def main(savefile = None):
             calories = input("How many calories was it?")
             doneornot = input("Are you done eating for the day(True/False)?")
             functions.calorie_tracker(food, calories, calgoals, doneornot)
+        elif choice == 'bmr':
+            bmr = functions.BMR(gender, height, weight, age)
+            print(bmr)
         elif choice == 'view history':
             if savefile:
-                #use save.past_workouts when finished
-                pass
+                hist_choice = input("type date in YYYY-MM-DD format for specifc day, or type 'all' for total history.")
+                if hist_choice == 'all':
+                    save.past_workouts(savefile)
+                else:
+                    save.past_workouts(savefile, spec_day = hist_choice)
         elif choice == 'save':
             if savefile:
                 save.add_save(savefile, workout)
