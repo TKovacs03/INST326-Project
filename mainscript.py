@@ -1,44 +1,53 @@
 import functions
-from exercise import file_reader
-import user
+import exercise
+from user import User
 import save
 
 
-def main(user):
+def main(exercise_file, savefile = None):
     '''execute the workout tracker program.'''
+    if savefile:
+        pass
+    else:
+        name = input('What is your name?\n')
+        age = input('What is your age\n')
+        height = input('Your height?\n')
+        weight = input('Weight?\n')
+        gender = input('Gender?\n')
+        level = input('Level of exercise experience (novice, intermediate, expert)\n')
+        main_user = User(name, age, height, weight, gender, level)
+    
     while True:
-        choice = input('What would you like to do? (workout, view history, track calories, save, or end)\n')
+        choice = input('What would you like to do? (workout, view history, track calories, save, or end)')
         if choice == 'workout':
-            exercise_file = input('What is the name of your exercise file?\n')
-            workout_type = input('What kind of workout? (push, pull, or legs)\n')
-            print("Your workout is as follows:\n")
-            workout = functions.workout_generator(workout_type, file_reader(exercise_file))
-            for w in workout:
-                print(f"{w['name']}: {w[user.gender]}lbs {w['rep']}\n {w['desc']}")
-           
+            workout_type = input('What kind of workout? (push, pull, or legs)')
+            workout = functions.workout_generator(workout_type, exercise_file)
+            print(workout)
         elif choice == 'track calories':
-            bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
-            calgoals = functions.total_cal_intake(bmr, user.level)
+            bmr = functions.BMR(gender, height, weight, age)
+            alevel = input("How often do you exercise on a weekly basis(Little to None, Lightly Active,\n Moderately Active, Very Active, Extremely Active)?")
+            calgoals = functions.total_cal_intake(bmr, alevel)
             foodcals = {}
             food = input("What food did you eat?")
             calories = input("How many calories was it?")
-            doneornot = input("Are you done eating for the day(True/False)?")
+            doneornot = input("Are you done eating for the day(Yes/No)?")
             functions.calorie_tracker(food, calories, calgoals, doneornot)
         elif choice == 'bmr':
-            bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
+            bmr = functions.BMR(gender, height, weight, age)
             print(bmr)
         elif choice == 'view history':
-            try:
-                save.past_workouts(user.name)
-            except:
-                print('No preexisting save')
+            if savefile:
+                hist_choice = input("type date in YYYY-MM-DD format for specifc day, or type 'all' for total history.")
+                if hist_choice == 'all':
+                    save.past_workouts(savefile)
+                else:
+                    save.past_workouts(savefile, spec_day = hist_choice)
         elif choice == 'save':
-            try:
-                save.add_save(user.name, workout)
-                break
-            except:
-                save.new_save(user.name, workout)
-                break
+            if savefile:
+                save.add_save(savefile, workout)
+            else:
+                fname = input('what would you like to name your file?\n')
+                save.new_save(fname, workout, main_user)
         elif choice == 'end':
             print('Goodbye!')
             break
@@ -47,6 +56,4 @@ def main(user):
         
 
 if __name__ == "__main__":
-    args = user.parse_args()
-    main(user.user_information(args.name, args.age, args.height, args.weight, args.gender, args.active_level))
-        
+    main()
