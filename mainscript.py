@@ -52,7 +52,7 @@ def main(exercise_file, savefile = None):
                 save.add_save(savefile, workout)
                 break
             else:
-                fname = input('what would you like to name your file?\n')
+                fname = main_user.name
                 save.new_save(fname, workout, main_user)
                 break
         elif choice == 'end':
