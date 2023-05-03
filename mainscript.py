@@ -3,7 +3,7 @@ from exercise import file_reader
 import user
 import save
 
-
+foodcals = {}
 def main(user):
     '''execute the workout tracker program.'''
     while True:
@@ -17,14 +17,20 @@ def main(user):
                 print(f"{w['name']}: {w[user.gender]}lbs {w['rep']}\n {w['desc']}")
 
         elif choice == 'track calories':
-            bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
-            alevel = input("How often do you exercise on a weekly basis(Little to None, Lightly Active,\n Moderately Active, Very Active, Extremely Active)?\n")
-            calgoals = functions.total_cal_intake(bmr, alevel)
-            foodcals = {}
-            food = input("What food did you eat?\n")
-            calories = input("How many calories was it?\n")
-            doneornot = input("Are you done eating for the day(True/False)?\n")
-            functions.calorie_tracker(food, calories, calgoals, doneornot)
+            if len(foodcals) < 1:
+                bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
+                alevel = input("How often do you exercise on a weekly basis(Little to None, Lightly Active,\n Moderately Active, Very Active, Extremely Active)?\n")
+                calgoals = functions.total_cal_intake(bmr, alevel)
+                food = input("What food did you eat?\n")
+                calories = input("How many calories was it?\n")
+                doneornot = input("Are you done eating for the day(True/False)?\n")
+                functions.calorie_tracker(food, calories, calgoals, doneornot)
+            if len(foodcals) > 0:
+                food = input("What food did you eat?\n")
+                calories = input("How many calories was it?\n")
+                doneornot = input("Are you done eating for the day(True/False)?\n")
+                calgoals = calgoals - sum(foodcals.values())
+                functions.calorie_tracker(food, calories, calgoals, doneornot)
         elif choice == 'bmr':
             bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
             print(bmr)
