@@ -31,6 +31,9 @@ def main(savefile = None):
             calories = input("How many calories was it?")
             doneornot = input("Are you done eating for the day(True/False)?")
             functions.calorie_tracker(food, calories, calgoals, doneornot)
+        elif choice == 'bmr':
+            bmr = functions.BMR(gender, height, weight, age)
+            print(bmr)
         elif choice == 'view history':
             if savefile:
                 hist_choice = input("type date in YYYY-MM-DD format for specifc day, or type 'all' for total history.")
