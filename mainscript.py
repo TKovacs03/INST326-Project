@@ -33,8 +33,11 @@ def main(savefile = None):
             functions.calorie_tracker(food, calories, calgoals, doneornot)
         elif choice == 'view history':
             if savefile:
-                #use save.past_workouts when finished
-                pass
+                hist_choice = input("type date in YYYY-MM-DD format for specifc day, or type 'all' for total history.")
+                if hist_choice == 'all':
+                    save.past_workouts(savefile)
+                else:
+                    save.past_workouts(savefile, spec_day = hist_choice)
         elif choice == 'save':
             if savefile:
                 save.add_save(savefile, workout)

@@ -16,6 +16,7 @@ def file_reader(file):
             e_dict['group'] = l[4]    
             e_dict['desc'] = l[5]        
             exercise_list.append(e_dict)
+    return exercise_list
             
 
             
