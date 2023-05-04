@@ -19,10 +19,11 @@ def main(user):
         elif choice == 'track calories':
             if len(foodcals) < 1:
                 bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
-                calgoals = round(functions.total_cal_intake(bmr, args.active_level), 0)
+                calgoals = functions.total_cal_intake(bmr, args.active_level)
+                calgoals = round(calgoals, 0)
                 food = input("What food did you eat?\n")
                 calories = input("How many calories was it?\n")
-                doneornot = input("Are you done eating for the day(True/False)?\n")
+                doneornot = input("Are you done eating for the day(Yes/No)?\n")
                 functions.calorie_tracker(food, calories, calgoals, doneornot)
         elif choice == 'bmr':
             bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
