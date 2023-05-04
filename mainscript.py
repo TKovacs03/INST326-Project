@@ -7,7 +7,7 @@ foodcals = {}
 def main(user):
     '''execute the workout tracker program.'''
     while True:
-        choice = input('What would you like to do? (workout, view history, track calories, save, or end)\n')
+        choice = input('What would you like to do? (workout, view history, track calories, bmr, calorie intake, save, or end)\n')
         if choice == 'workout':
             exercise_file = input('What is the name of your exercise file?\n')
             workout_type = input('What kind of workout? (push, pull, or legs)\n')
