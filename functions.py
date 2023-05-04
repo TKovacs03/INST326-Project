@@ -146,6 +146,16 @@ def calorie_tracker(food, calories, goal, done = "No"):
         foodcals.clear
 
 
+def get_BMI(height, weight):
+    """" A function that determines if a person is  underweight to obese"""
+    
+    height_inches = height * 12
+    height_meters = height_inches * 0.025
+    weight_kg = weight * 0.45
+    bmi = weight_kg / (height_meters ** 2)
+    return bmi
+    
+
 
        
         
