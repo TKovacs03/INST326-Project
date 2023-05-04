@@ -1,6 +1,6 @@
 import functions
 from exercise import file_reader
-import user
+from user import User , parse_args
 import save
 
 foodcals = {}
@@ -52,5 +52,6 @@ def main(user):
 
 
 if __name__ == "__main__":
-    args = user.parse_args()
-    main(user.user_information(args.name, args.age, args.height, args.weight, args.gender, args.active_level))
+    args = parse_args()
+    user = User(args.name, args.age, args.height, args.weight, args.gender, args.active_level)
+    main(user)
