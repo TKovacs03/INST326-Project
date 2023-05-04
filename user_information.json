@@ -38,5 +38,13 @@
         "weight": 180,
         "gender": "m",
         "active_level": "intermediate"
+    },
+    "Brown": {
+        "name": "Brown",
+        "age": 25,
+        "height": 6,
+        "weight": 170,
+        "gender": "male",
+        "active_level": "beginner"
     }
 }
