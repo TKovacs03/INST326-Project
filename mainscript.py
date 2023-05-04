@@ -20,7 +20,7 @@ def main(user):
             if len(foodcals) < 1:
                 bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
                 alevel = input("How often do you exercise on a weekly basis(Little to None, Lightly Active,\n Moderately Active, Very Active, Extremely Active)?\n")
-                calgoals = functions.total_cal_intake(bmr, alevel)
+                calgoals = round(functions.total_cal_intake(bmr, alevel))
                 food = input("What food did you eat?\n")
                 calories = input("How many calories was it?\n")
                 doneornot = input("Are you done eating for the day(True/False)?\n")
@@ -33,7 +33,7 @@ def main(user):
                 functions.calorie_tracker(food, calories, calgoals, doneornot)
         elif choice == 'bmr':
             bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
-            print(bmr)
+            print(f"Your bmr is {bmr}")
         elif choice == 'view history':
             try:
                 save.past_workouts(user.name)
