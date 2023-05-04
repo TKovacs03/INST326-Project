@@ -17,20 +17,19 @@ def main(user):
                 print(f"{w['name']}: {w[user.gender]}lbs {w['rep']}\n {w['desc']}")
 
         elif choice == 'track calories':
-            if len(foodcals) < 1:
                 bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
                 calgoals = functions.total_cal_intake(bmr, args.active_level)
                 calgoals = round(calgoals, 0)
                 food = input("What food did you eat?\n")
                 calories = input("How many calories was it?\n")
-                doneornot = input("Are you done eating for the day(Yes/No)?\n")
+                doneornot = input("Are you done eating for the day and will not hit your calorie goal(Yes/No)?\n")
                 functions.calorie_tracker(food, calories, calgoals, doneornot)
         elif choice == 'bmr':
             bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
             print(f"Your bmr is {bmr}")
         elif choice == 'calorie intake':
             bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
-            cal_intake = round(functions.total_cal_intake(bmr, user.active_level), 0)
+            cal_intake = round(functions.total_cal_intake(bmr, user.active_level), -1)
             print(f"You should intake {cal_intake} calories")
         elif choice == 'view history':
             try:
