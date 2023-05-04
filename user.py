@@ -31,7 +31,7 @@ class User:
         print(f"Welcome, {self.name}! Your private data has been stored. The details you offered are as follows.")
         print(f"You are {self.age} years old, {self.height} inches tall, and weigh {self.weight} pounds.")
         print(f"Your gender is {self.gender}.")
-        print(f"You indicated that your workout level is {self.active_level}.")
+        print(f"You indicated that your weekly activity level is {self.active_level}.")
         if self.name in users_output:
             return user
 
