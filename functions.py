@@ -67,8 +67,6 @@ def BMR(gender, height, weight, age):
         height: the user's specified height
         weight: the user's specified weight
         age: the user's specified age
-    Side effects:
-
     Returns:
         BMR based off of user's gender, weight, height, and age
     """
@@ -84,8 +82,6 @@ def total_cal_intake(bmr, level):
     Args:
         bmr: Basal Metabolic Rate (BMR) of the user
         level: the average level of activity user partakes in on a weekly basis
-    Side effects:
-
     Returns:
         the recommended daily calories necessary for user based on their activity level
     """
