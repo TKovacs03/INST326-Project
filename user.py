@@ -33,7 +33,7 @@ class User:
         print(f"Your gender is {self.gender}.")
         print(f"You indicated that your workout level is {self.active_level}.")
         if self.name in users_output:
-            return user
+            print(self)
 
         else:
             user_dict = {
