@@ -144,10 +144,22 @@ def calorie_tracker(food, calories, goal, done = "No"):
 
 
 def get_BMI(height, weight):
-    """" A function that determines if a person is  underweight to obese"""
+    """" A function that determines if a person is  underweight to obese.
     
-    height_inches = height * 12
-    height_meters = height_inches * 0.025
+    Args:
+        height (int): it take a person height in inches
+        weight (int): it takes a person weight in pounds
+        
+    Returns:
+        bmi (float): it returns a float of a person health bmi
+            Underweight: BMI < 18.5
+            Normal weight: 18.5 < BMI < 24.9
+            Overweight: 25 < BMI < 29.9
+            Obese: BMI => 30
+    
+    """
+    
+    height_meters = height * 0.025
     weight_kg = weight * 0.45
     bmi = weight_kg / (height_meters ** 2)
     return bmi
