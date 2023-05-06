@@ -2,12 +2,13 @@ import functions
 from exercise import file_reader
 from user import User , parse_args
 import save
+import json
 
 foodcals = {}
 def main(user):
     '''execute the workout tracker program.'''
     while True:
-        choice = input('What would you like to do? (workout, view history, track calories, bmr, calorie intake, save, or end)\n')
+        choice = input('What would you like to do? (workout, view history, track calories, bmr, calorie intake, save, add user, or end)\n')
         if choice == 'workout':
             exercise_file = input('What is the name of your exercise file?\n')
             workout_type = input('What kind of workout? (push, pull, or legs)\n')
@@ -45,6 +46,40 @@ def main(user):
                 break
         elif choice == 'end':
             print('Goodbye!')
+            
+        elif choice == "add user":
+            with open("user_information.json", "r") as f:
+                users_output = json.load(f)
+                
+            name = input("Enter your name:\n")
+            age = input("Enter your age:\n")
+            height = input("Enter your height in inches:\n")
+            weight = input("Enter your weight in pounds:\n")
+            gender = input("Enter your gender:\n")
+            active_level = input("Enter your active_level, either Little/None,"
+                                 "Light, Moderate, High, Extreme :\n")
+        
+            if name in users_output:
+                print("We already have your information. Thank you!")
+            else:
+                user_dict = {
+                        "name": name,
+                        "age": age,
+                        "height": height,
+                        "weight": weight,
+                        "gender": gender,
+                        "active_level": active_level,
+                        }
+                    
+                users_output[name] = user_dict
+                
+                with open("user_information.json", "w") as f:
+                    json.dump(users_output, f, indent = 4)
+                    
+            print(f"Welcome, {name}! Your private data has been stored. The details you offered are as follows.")
+            print(f"You are {age} years old, {height} inches tall, and weigh {weight} pounds.")
+            print(f"Your gender is {gender}.")
+            print(f"You indicated that your weekly activity level is {active_level}.")    
 
 
 
@@ -52,3 +87,5 @@ if __name__ == "__main__":
     args = parse_args()
     user = User(args.name, args.age, args.height, args.weight, args.gender, args.active_level)
     main(user)
+    
+    
