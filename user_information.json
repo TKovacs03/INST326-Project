@@ -2,7 +2,7 @@
     "Gordon": {
         "name": "Gordon",
         "age": 26,
-        "height": 67,
+        "height": 69,
         "weight": 154,
         "gender": "male",
         "active_level": "beginner"
@@ -18,7 +18,7 @@
     "Emily": {
         "name": "Emily",
         "age": 24,
-        "height": 67,
+        "height": 70,
         "weight": 154,
         "gender": "female",
         "active_level": "beginner"
@@ -26,7 +26,7 @@
     "Ronald": {
         "name": "Ronald",
         "age": 24,
-        "height": 67,
+        "height": 65,
         "weight": 154,
         "gender": "female",
         "active_level": "beginner"
@@ -34,7 +34,7 @@
     "tj": {
         "name": "tj",
         "age": 20,
-        "height": 6,
+        "height": 71,
         "weight": 180,
         "gender": "m",
         "active_level": "intermediate"
@@ -42,7 +42,7 @@
     "Brown": {
         "name": "Brown",
         "age": 25,
-        "height": 6,
+        "height": 69,
         "weight": 170,
         "gender": "male",
         "active_level": "beginner"
