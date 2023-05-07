@@ -4,11 +4,12 @@ from user import User , parse_args
 import save
 import json
 
+
 foodcals = {}
 def main(user):
     '''execute the workout tracker program.'''
     while True:
-        choice = input('What would you like to do? (workout, view history, track calories, bmr, calorie intake, save, add user, or end)\n')
+        choice = input('What would you like to do? (workout, view history, track calories, bmr, calorie intake, save, add user, bmi plot or end)\n')
         if choice == 'workout':
             exercise_file = input('What is the name of your exercise file?\n')
             workout_type = input('What kind of workout? (push, pull, or legs)\n')
@@ -79,7 +80,11 @@ def main(user):
             print(f"Welcome, {name}! Your private data has been stored. The details you offered are as follows.")
             print(f"You are {age} years old, {height} inches tall, and weigh {weight} pounds.")
             print(f"Your gender is {gender}.")
-            print(f"You indicated that your weekly activity level is {active_level}.")    
+            print(f"You indicated that your weekly activity level is {active_level}.") 
+        
+        
+        elif choice == "bmi plot":
+            functions.showBMI_plot("user_information.json")   
 
 
 
