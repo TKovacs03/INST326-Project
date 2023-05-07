@@ -1,5 +1,10 @@
 import random
 import exercise
+import json
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 
 
 '''Miscellaneous functions not included in either user or exercise file.
@@ -31,6 +36,7 @@ def workout_generator(workout_type, workout_list):
     
     Args:
         workout_type (str): it takes a workout selection of pull, push or legs
+        work_list (str): a string of exerices types 
 
     Returns:
         sets (int): The number of exercise set the user performs
@@ -144,7 +150,7 @@ def calorie_tracker(food, calories, goal, done = "No"):
 
 
 def get_BMI(height, weight):
-    """" A function that determines if a person is  underweight to obese.
+    """" A function that determines if a person is underweight to obese.
     
     Args:
         height (int): it take a person height in inches
@@ -163,6 +169,42 @@ def get_BMI(height, weight):
     weight_kg = weight * 0.45
     bmi = weight_kg / (height_meters ** 2)
     return bmi
+
+
+def showBMI_plot(jsonpath):
+    """A function that shows users BMI visualization using user weight and height.
+    
+    Args:
+        jsonpath (str): It takes a json file path 
+        
+    Side effects:
+        It shows a bar graph of users BMI to stdout 
+    
+    """
+    
+    with open(jsonpath, 'r') as fhand:
+        user_info = json.load(fhand)
+
+    list_of_dict = []
+    df_data ={'name':[],
+            'height':[],
+            'weight':[]}
+    list_of_dict = [user_info[keys] for keys in user_info] # conditional expression
+  
+    for user in list_of_dict:
+        
+        df_data['name'].append(user['name'])
+        df_data['height'].append(user['height'])
+        df_data['weight'].append(user['weight'])
+
+    df = pd.DataFrame(df_data)
+    df['bmi'] = df.apply(lambda x: get_BMI(x['height'], x['weight']),\
+        axis=1).round(1)
+    
+    sns.barplot(data=df, x='name', y='bmi')
+    print(f"\n{df}")
+    plt.show()
+  
     
 
 
