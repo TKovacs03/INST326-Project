@@ -1,5 +1,4 @@
 import functions
-from exercise import file_reader
 from user import User , parse_args
 import save
 import json
@@ -14,7 +13,7 @@ def main(user):
             exercise_file = input('What is the name of your exercise file?\n')
             workout_type = input('What kind of workout? (push, pull, or legs)\n')
             print("Your workout is as follows:\n")
-            workout = functions.workout_generator(workout_type, file_reader(exercise_file))
+            workout = functions.workout_generator(workout_type, functions.file_reader(exercise_file))
             for w in workout:
                 print(f"{w['name']}: {w[user.gender]}lbs {w['rep']}\n {w['desc']}")
 
@@ -33,11 +32,17 @@ def main(user):
             bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
             cal_intake = round(functions.total_cal_intake(bmr, user.active_level), -1)
             print(f"You should intake {cal_intake} calories")
+            
         elif choice == 'view history':
-            try:
-                save.past_workouts(user.name)
-            except:
-                print('No preexisting save')
+                date = input(
+                    "if you'd like to view a specific date, type it in" 
+                    " YYYY-MM-DD format. Otherwise type none\n"
+                    )
+                if date in ('none', 'None') :
+                    save.past_workouts(user.name)
+                else:     
+                    save.past_workouts(user.name, spec_day = date)
+            
         elif choice == 'save':
             try:
                 save.add_save(user.name, workout)
