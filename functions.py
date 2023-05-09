@@ -124,8 +124,10 @@ def total_cal_intake(bmr, level):
         return daily_cals
     
 #Alex Hildebrand Function   
+foodcalu = {}
 foodcals = {}
-def calorie_tracker(food, calories, goal, done = "No"):
+class Calorie_tracker:
+ def __init__(self, food, calories, goal, done = "No"):
     """Allows you to see the foods you've eaten and their calories and updates you on where you
     are at in reaching your calorie goal
     Args:
@@ -138,7 +140,8 @@ def calorie_tracker(food, calories, goal, done = "No"):
     to hit your goal
     Side Effects: Prints to the console and changes global variable"""
     calories = int(calories)
-    foodcals[food] = calories
+    foodcalu[food] = calories
+    foodcals = dict(self.most_cals(foodcalu))
     total_calories = sum(foodcals.values())
     if total_calories < goal:
         for key in foodcals:
@@ -159,8 +162,17 @@ def calorie_tracker(food, calories, goal, done = "No"):
             print(f"{key}: {foodcals[key]} calories")
         print("You may have overeaten your calorie goal")
         foodcals.clear
+ def most_cals(self, di):
+     """Sorts the dictionary displaying in order the most to least calories for each food to give the user
+     a better perspective of where most of their calories are coming from
+     Args:
+        di(dictionary): a dictionary in the proper format
+    Returns: The input dictionary sorted by foods with the most calories first
+     """
+     foodcals = sorted(di.items(), key=lambda x: x[1], reverse=True)
+     return foodcals
 
-
+       
 def get_BMI(height, weight):
     """" A function that determines if a person is underweight to obese.
     
