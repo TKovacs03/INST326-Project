@@ -46,5 +46,21 @@
         "weight": 170,
         "gender": "male",
         "active_level": "beginner"
+    },
+    "Rihanna": {
+        "name": "Rihanna",
+        "age": 24,
+        "height": 67,
+        "weight": 154,
+        "gender": "f",
+        "active_level": "beginner"
+    },
+    "Joe": {
+        "name": "Joe",
+        "age": "20",
+        "height": "76",
+        "weight": "180",
+        "gender": "male",
+        "active_level": "High"
     }
 }

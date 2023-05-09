@@ -3,8 +3,24 @@ import json
 
 
 class User:
+    """
+    Attributes: 
+    Represents a user's information. 
+    
+    """
     
     def __init__(self, name, age, height, weight, gender, active_level=None):
+        """ Sets and initailizes attributes.
+        
+        Args:
+        name(str) : name of user
+        age(int): age of user
+        height(int): height of user in inches
+        weight(int): weight of user in pounds
+        gender(str): gender of user 
+        active(str): active level of user
+        """
+        
         self.name = name
         self.age = age
         self.height = height
@@ -13,6 +29,13 @@ class User:
         self.active_level = active_level
     
     def __repr__(self):
+        """
+        Produce a formal string representation of a user.
+        
+        Returns:
+        str: the string representation.
+        """
+        
         return (
             f"Name: {self.name}\n"
             f"Age: {self.age}\n"
@@ -24,6 +47,16 @@ class User:
 
 
     def user_information(self):
+        """
+        This method saves the information provided by user in a JSON file. 
+        
+        Side effects:
+        The attributes provided by the user are stored in a dictionary.
+        Displays a welcome message and the provided information of user.
+        The user information is loaded from and dumped into 
+        the user_infromation JSON file.
+    
+        """
         
         with open("user_information.json", "r") as f:
             users_output = json.load(f)
@@ -53,24 +86,25 @@ class User:
         
             with open("user_information.json", "w") as f:
                 json.dump(users_output, f, indent = 4)
-            return self
+            print (self)
         
 
         
 def parse_args():
     """ Parse command-line arguments.
     
-    Expect six mandatory arguments:
+    Expects six mandatory arguments:
         name: the name of the user (str)
         age: the age of the user (int)
-        height: the height of the user in inches (int)
-        weight: the weight of the user in pounds (int)
-        gender: the gender of the user (str)
+        height: the height of user in inches (int)
+        weight: the weight of user in pounds (int)
+        gender: the gender of user (str)
         active_level: the workout level of the user (str)
     
     Returns:
         namespace: an object with attributes for each argument.
     """
+    
     parser = ArgumentParser()
     parser.add_argument("name", type=str, help="name of user")
     parser.add_argument("age", type=int, help="age of the user")

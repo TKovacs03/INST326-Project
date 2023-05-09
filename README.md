@@ -1,6 +1,28 @@
 # INST326-Project
 Fitness Tracking app
-    
+
+user.py file:
+    1. The User class initializes the following attributes:
+        name of user(str)
+        age of user(int)
+        height of user in inches(int)
+        weight of user in pounds(int)
+        gender of user (str)
+        active level of user is either "Little/None",
+        "Light","Moderate","High","Extreme"(str)
+
+    2. Repr method is used to return the formal string representation of 
+    the attributes.
+
+    3. The user_information method opens a JSON file and loads the information 
+    provided by the user. It prints out the welcome message and repeats the 
+    users information for final verification. The information is saved in a 
+    dictionary in a JSON file and uses the users name as a key. 
+
+    4. The parse_args method is used to parse the command line arguments 
+    provided by the user and returns it to its appropriate attributes.
+
+
 functions.py file:
     workout_generator function:
         1. It ask user to select an exercise category (ie: Push, Pull or legs)
@@ -55,7 +77,11 @@ functions.py file:
 +-------------------------------------------------------------------------------------------------------------------------------------------+
 | past_workouts                     |    Thomas Kovacs                      | keyword argument                                              |
 +-------------------------------------------------------------------------------------------------------------------------------------------+
-|                                   |                                       |                                                               |
+|user_information                   |   Ewura Impraim                       | use of json.load and json.dump                                |                                                                   
++-------------------------------------------------------------------------------------------------------------------------------------------+
+|repr method                        |   Ewura Impraim                       | magic method other than __init__                              |                                        
++-------------------------------------------------------------------------------------------------------------------------------------------+
+| parse_args                        |   Ewura Impraim                       | ArgumentParser class from argparse method                    |                  
 +-------------------------------------------------------------------------------------------------------------------------------------------+
 |                                   |                                       |                                                               |
 +-------------------------------------------------------------------------------------------------------------------------------------------+
@@ -65,12 +91,4 @@ functions.py file:
 +-------------------------------------------------------------------------------------------------------------------------------------------+
 |                                   |                                       |                                                               |
 +-------------------------------------------------------------------------------------------------------------------------------------------+
-|                                   |                                       |                                                               |
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-|                                   |                                       |                                                               |
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-
-
-
-
 
