@@ -3,6 +3,8 @@ Fitness Tracking app
 
 
 User Class Description.
+
+
 user.py file:
     1. The User class initializes the following attributes:
         name of user(str)
