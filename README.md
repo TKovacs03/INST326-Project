@@ -5,7 +5,7 @@ functions.py file:
     workout_generator function:
         1. It ask user to select an exercise category (ie: Push, Pull or legs)
         2. If the user choice is not in the scope of exercises we offer, it generates a ValueError with a message
-        3. But if the selection either push, pull or leg. It accesses the sample_exercise_data.csv and reads content 
+        3. But if the selection is either push, pull or leg. It accesses the sample_exercise_data.csv and reads content 
            to workout_generator function.
         4. The function uses list comprehension with filtering and random choice to select specific exercises for the user
            based on user choice and gender.
