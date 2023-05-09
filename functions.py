@@ -35,13 +35,12 @@ def file_reader(file):
     TJ Kovacs
     Create a list of dictionaries of exercises from a csv file, format:
     name; maleweight; femaleweight; setsxreps; workout type; description
-    
     for use in workout generation. 
     
-    args: 
+    Args: 
     file(str): name of csv file
     
-    returns:
+    Returns:
         exercise_list(list of dict): a list of dictionaries.
     
     '''
