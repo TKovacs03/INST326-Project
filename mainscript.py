@@ -24,7 +24,7 @@ def main(user):
                 food = input("What food did you eat?\n")
                 calories = input("How many calories was it?\n")
                 doneornot = input("Are you done eating for the day and will not hit your calorie goal(Yes/No)?\n")
-                functions.calorie_tracker(food, calories, calgoals, doneornot)
+                functions.Calorie_tracker(food, calories, calgoals, doneornot)
         elif choice == 'bmr':
             bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
             print(f"Your bmr is {bmr}")
