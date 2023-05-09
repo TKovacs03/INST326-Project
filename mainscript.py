@@ -10,7 +10,7 @@ def main(user):
     while True:
         choice = input('What would you like to do? (workout, view history, track calories, bmr, calorie intake, save, add user, bmi plot or end)\n')
         if choice == 'workout':
-            exercise_file = input('What is the name of your exercise file?\n')
+            exercise_file = "sample_exercise_data.csv"   
             workout_type = input('What kind of workout? (push, pull, or legs)\n')
             print("Your workout is as follows:\n")
             workout = functions.workout_generator(workout_type, functions.file_reader(exercise_file))
@@ -51,7 +51,8 @@ def main(user):
                 save.new_save(user.name, workout)
                 break
         elif choice == 'end':
-            print('Goodbye!')
+            print("The program will end now \nGoodbye!!")
+            break
             
         elif choice == "add user":
             with open("user_information.json", "r") as f:
