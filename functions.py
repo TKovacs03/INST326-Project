@@ -6,27 +6,7 @@ import seaborn as sns
 
 
 
-'''Miscellaneous functions not included in either user or exercise file.
-Can also be used to write a preliminary main script for testing
-
-Should contain:
-    workout generator:
-        ask user what kind of workout they'd like, and select workouts based on this input.
-        should hit every muscle group in selected type of workout:
-            push: chest, shoulders, triceps
-            pull: Biceps, back, lats
-            legs: quads, hamstrings, glutes
-        display weight and repetition range, as well as exercise description if user asks for it.
-            
-    workout saver:
-        should take user input for their performance on each exercise
-        use this information to create new user_exercise objects and add them to user's container if it's the first time they've done it,
-        or modify existing user_exercise objects
-        i.e. if the user says their bench press set was very easy, add 5-10 pounds.
-        
-    calorie tracker:
-        
-'''
+""" Miscellaneous functions used in mainscript.py """
 
 
 
@@ -61,13 +41,13 @@ def file_reader(file):
 
 
 def workout_generator(workout_type, workout_list):
-    """ A function that generates random workout base on user category.
-    This function takes user workout category to generate random workout.
+    """ A function that generates random workout base on user categorical choice.
+    This function takes user workout choice (push, pull or legs)  and a list of exercises to generate random workout.
     
     
     Args:
         workout_type (str): it takes a workout selection of pull, push or legs
-        work_list (str): a string of exerices types 
+        work_list (list): a list of exerices types 
 
     Returns:
         sets (int): The number of exercise set the user performs
@@ -104,6 +84,7 @@ def BMR(gender, height, weight, age):
         height: the user's specified height
         weight: the user's specified weight
         age: the user's specified age
+        
     Returns:
         BMR based off of user's gender, weight, height, and age
     """
@@ -203,13 +184,13 @@ def get_BMI(height, weight):
 
 
 def showBMI_plot(jsonpath):
-    """A function that shows users BMI visualization using user weight and height.
+    """A function that shows users BMI visualization, using users weight and height in json file.
     
     Args:
         jsonpath (str): It takes a json file path 
         
     Side effects:
-        It shows a bar graph of users BMI to stdout 
+        It shows a bar graph and a DataFrame records of users BMI to stdout 
     
     """
     
@@ -237,14 +218,4 @@ def showBMI_plot(jsonpath):
     plt.show()
   
     
-
-
-       
-        
-        
-        
-
-
     
-    
-
