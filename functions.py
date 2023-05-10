@@ -188,8 +188,8 @@ def get_BMI(height, weight):
     
     """
     
-    height_meters = height * 0.025
-    weight_kg = weight * 0.45
+    height_meters = int(height) * 0.025
+    weight_kg = int(weight) * 0.45
     bmi = weight_kg / (height_meters ** 2)
     return bmi
 
@@ -212,20 +212,21 @@ def showBMI_plot(jsonpath):
     df_data ={'name':[],
             'height':[],
             'weight':[]}
-    list_of_dict = [user_info[keys] for keys in user_info] # conditional expression
+    list_of_dict = [user_info[keys] for keys in user_info] 
   
-    for user in list_of_dict:
+    for person in list_of_dict:
         
-        df_data['name'].append(user['name'])
-        df_data['height'].append(user['height'])
-        df_data['weight'].append(user['weight'])
+        df_data['name'].append(person['name'])
+        df_data['height'].append(person['height'])
+        df_data['weight'].append(person['weight'])
 
     df = pd.DataFrame(df_data)
-    df['bmi'] = df.apply(lambda x: get_BMI(x['height'], x['weight']),\
-        axis=1).round(1)
+    df['bmi'] = df.apply(lambda x: get_BMI(x[1], x[2]),axis=1).round(1) 
     
     sns.barplot(data=df, x='name', y='bmi')
-    print(f"\n{df}")
+    print("\nUsers Body Mass Index(BMI) records and graph\n")
+    new_df = df[['name', 'bmi']]
+    print(f"\n{new_df}")
     plt.show()
   
     
