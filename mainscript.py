@@ -9,7 +9,7 @@ foodcals = {}
 def main(user):
     '''execute the workout tracker program.'''
     while True:
-        choice = input('What would you like to do?(workout, view history, track'
+        choice = input('What would you like to do?(workout, view history, track '
                        'calories, bmr, calorie intake, save,'
                        'add user, bmi plot or end)\n')
         
