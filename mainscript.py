@@ -5,12 +5,14 @@ import json
 
 
 foodcals = {}
+
 def main(user):
     '''execute the workout tracker program.'''
     while True:
         choice = input('What would you like to do?(workout, view history, track'
                        'calories, bmr, calorie intake, save,'
                        'add user, bmi plot or end)\n')
+        
         if choice == 'workout':
             exercise_file = "sample_exercise_data.csv"   
             workout_type = input('What kind of workout? (push, pull, legs)\n')
@@ -30,9 +32,11 @@ def main(user):
                 doneornot = input("Are you done eating for the day and will"
                                   "not hit your calorie goal(Yes/No)?\n")
                 functions.Calorie_tracker(food, calories, calgoals, doneornot)
+                
         elif choice == 'bmr':
             bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
             print(f"Your bmr is {bmr}")
+            
         elif choice == 'calorie intake':
             bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
             cal_intake = round(functions.total_cal_intake(bmr, user.active_level), -1)
@@ -55,6 +59,7 @@ def main(user):
             except:
                 save.new_save(user.name, workout)
                 break
+            
         elif choice == 'end':
             print("Goodbye!")
             break
@@ -73,6 +78,7 @@ def main(user):
         
             if name in users_output:
                 print("We already have your information. Thank you!")
+                
             else:
                 user_dict = {
                         "name": name,
@@ -93,8 +99,7 @@ def main(user):
             print(f"You are {age} years old, {height} inches tall, and weigh {weight} pounds.")
             print(f"Your gender is {gender}.")
             print(f"You indicated that your weekly activity level is {active_level}.") 
-        
-        
+            
         elif choice == "bmi plot":
             functions.showBMI_plot("user_information.json")   
 
