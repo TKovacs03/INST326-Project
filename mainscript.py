@@ -8,12 +8,16 @@ foodcals = {}
 def main(user):
     '''execute the workout tracker program.'''
     while True:
-        choice = input('What would you like to do? (workout, view history, track calories, bmr, calorie intake, save, add user, bmi plot or end)\n')
+        choice = input('What would you like to do?(workout, view history, track'
+                       'calories, bmr, calorie intake, save,'
+                       'add user, bmi plot or end)\n')
         if choice == 'workout':
             exercise_file = "sample_exercise_data.csv"   
-            workout_type = input('What kind of workout? (push, pull, or legs)\n')
+            workout_type = input('What kind of workout? (push, pull, legs)\n')
             print("Your workout is as follows:\n")
-            workout = functions.workout_generator(workout_type, functions.file_reader(exercise_file))
+            workout = functions.workout_generator(
+                workout_type, functions.file_reader(exercise_file)
+                )
             for w in workout:
                 print(f"{w['name']}: {w[user.gender]}lbs {w['rep']}\n {w['desc']}")
 
@@ -23,7 +27,8 @@ def main(user):
                 calgoals = round(calgoals, 0)
                 food = input("What food did you eat?\n")
                 calories = input("How many calories was it?\n")
-                doneornot = input("Are you done eating for the day and will not hit your calorie goal(Yes/No)?\n")
+                doneornot = input("Are you done eating for the day and will"
+                                  "not hit your calorie goal(Yes/No)?\n")
                 functions.Calorie_tracker(food, calories, calgoals, doneornot)
         elif choice == 'bmr':
             bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
@@ -51,7 +56,7 @@ def main(user):
                 save.new_save(user.name, workout)
                 break
         elif choice == 'end':
-            print("The program will end now \nGoodbye!!")
+            print("Goodbye!")
             break
             
         elif choice == "add user":
@@ -83,7 +88,8 @@ def main(user):
                 with open("user_information.json", "w") as f:
                     json.dump(users_output, f, indent = 4)
                     
-            print(f"Welcome, {name}! Your private data has been stored. The details you offered are as follows.")
+            print(f"Welcome, {name}! Your private data has been stored. The"
+                  "details you offered are as follows.")
             print(f"You are {age} years old, {height} inches tall, and weigh {weight} pounds.")
             print(f"Your gender is {gender}.")
             print(f"You indicated that your weekly activity level is {active_level}.") 

@@ -1,12 +1,22 @@
 # INST326-Project
 Fitness Tracking app
 
+Instructions:
+    1. in the commandline, run mainscript.py with the following values:
+name age height(in inches) weight(lbs) gender('m' or 'f') activity (Littl/None, 
+Light, Moderate, High, Extreme)
+    2. follow instructions printed to terminal. Be sure to type options exactly
+        as they appear in terminal
+    3. when running "workout", when asked for a file, use 
+    "sample_exercise_data.csv". We could've hard coded the file in, but doing it
+     this way theoretically allows the user to use any file of correct format.
+ 
 
-User Class Description.
+
+
 
 
 user.py file:
-
 
     1. The User class initializes the following attributes:
         name of user(str)
@@ -70,34 +80,53 @@ functions.py file:
         6. It first shows the created DataFrame
         7. Then uses seaborn to plot a bar graph using user names as 'x' and related bmi as 'y' to create a colorful plot.
 
+save.py file:
+    new_save function:
+        1. takes the name of the user, the workouts they've completed today,
+        2. creates a .txt file named after the user with the workout and date.
+    add_save function:
+        1. same as new save, but writes to existing file if present
+    past_workouts function:
+        1. takes user name and optional date
+        2. returns full file if no optional date
+        3. searches for specific date and returns it if date
+
+sample_exercise_data.csv file:
+    provides exercises for the program to choose from, and all information.
+    could theoretically be substituted with any file of correct format.
+
+
+mainscript.py file:
 
 
 
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-| **Method/function**               |    **Primary author**                 |  **Techniques demonstrated**                                  | 
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-| workout_generator                 |    Gordon Brown                       | list comprehension with filtering                             |
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-| showBMI_plot                      |    Gordon Brown                       | visualization data using seaborn bar plot                     |
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-| file_reader                       |    Thomas Kovacs                      | with statement                                                |
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-| past_workouts                     |    Thomas Kovacs                      | keyword argument                                              |
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-| user_information                  |    Ewura Impraim                      | use of json.load and json dump                                |
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-| repr method                       |    Ewura Impraim                      | formal string representation of User class attributes         |
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-| parse_args                        |    Ewura Impraim                      | ArgumentParser class from argparse                            |
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-| calorie_tracker                    |   Alex Hildebrand                     | f-string w/expression             |
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-| most_cals                          | Alex Hildebrand                     | key function w/sorted               |
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-|                                   |                                       |                                                               |
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-|                                   |                                       |                                                               |
-+-------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+| **Method/function**               |    **Primary author**                 |  **Techniques demonstrated**                            | 
++-------------------------------------------------------------------------------------------------------------------------------------+
+| workout_generator                 |    Gordon Brown                       | list comprehension with filtering                       |
++-------------------------------------------------------------------------------------------------------------------------------------+
+| showBMI_plot                      |    Gordon Brown                       | visualization data using seaborn bar plot               |
++-------------------------------------------------------------------------------------------------------------------------------------+
+| file_reader                       |    Thomas Kovacs                      | with statement                                          |
++-------------------------------------------------------------------------------------------------------------------------------------+
+| past_workouts                     |    Thomas Kovacs                      | keyword argument                                        |
++-------------------------------------------------------------------------------------------------------------------------------------+
+| user_information                  |    Ewura Impraim                      | use of json.load and json dump                          |
++-------------------------------------------------------------------------------------------------------------------------------------+
+| repr method                       |    Ewura Impraim                      | formal string representation of User class attributes   |
++-------------------------------------------------------------------------------------------------------------------------------------+
+| parse_args                        |    Ewura Impraim                      | ArgumentParser class from argparse                      |
++-------------------------------------------------------------------------------------------------------------------------------------+
+| calorie_tracker                   |    Alex Hildebrand                    | f-string w/expression                                   |
++-------------------------------------------------------------------------------------------------------------------------------------+
+| most_cals                         |    Alex Hildebrand                    | key function w/sorted                                   |
++-------------------------------------------------------------------------------------------------------------------------------------+
+|                                   |                                       |                                                         |
++-------------------------------------------------------------------------------------------------------------------------------------+
+|                                   |                                       |                                                         |
++-------------------------------------------------------------------------------------------------------------------------------------+
 
