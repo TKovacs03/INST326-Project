@@ -161,7 +161,7 @@ class Calorie_tracker:
             for key in foodcals:
                 print(f"{key}: {foodcals[key]} calories")
             print("You may have overeaten your calorie goal")
-            foodcals.clear
+            foodcals.clear()
     def most_cals(self, di):
         """Sorts the dictionary displaying in order the most to least calories for each food to give the user
      a better perspective of where most of their calories are coming from
