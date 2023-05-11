@@ -9,8 +9,8 @@ foodcals = {}
 def main(user):
     '''execute the workout tracker program.'''
     while True:
-        choice = input('What would you like to do?(workout, view history, track '
-                       'calories, bmr, calorie intake, save,'
+        choice = input('What would you like to do?(workout, workout check-in, view history, '
+                       'track, calories, bmr, calorie intake, save, '
                        'add user, bmi plot or end)\n')
         
         if choice == 'workout':
@@ -22,6 +22,12 @@ def main(user):
                 )
             for w in workout:
                 print(f"{w['name']}: {w[user.gender]}lbs {w['rep']}\n {w['desc']}")
+
+        elif choice == 'workout check-in':
+            post_workout = input("Post workout check-in.\n"
+                                 "Enter in format: how intense was your workout (on a scale from 1-10), " 
+                                 "difficulty [too easy, too hard, just right]\n")
+            functions.Workout_checkin(post_workout)
 
         elif choice == 'track calories':
                 bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
