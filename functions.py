@@ -74,6 +74,15 @@ def workout_generator(workout_type, workout_list):
     return workout
         
 def workout_checkin(post_workout):
+    """Allows user to state the level of intensity and difficulty for their workout, stated post-workout.
+    
+    Args:
+        post_workout(str): contains intensity and difficulty for completed workout.
+
+    Side effects:
+        prints post-workout statements to console and modifies global variable.
+    
+    """
     intensity, difficulty = post_workout.split(", ")
     intensity = int(intensity)
     if intensity > 5 and difficulty == "too easy":
@@ -94,10 +103,11 @@ def workout_checkin(post_workout):
     if intensity < 6 and difficulty == "just right":
         print("Continue with current weight and intensity until too easy")
 
-# BMR Calculation function and Total Calorie Intake function
+# BMR Calculation function and Total Calorie Intake function - Simon Huynh
 
 def BMR(gender, height, weight, age):
     """Allows for a user to have their Basal Metabolic Rate (BMR) calculated utilizing user information from User class.
+
     Args:
         gender: the user's specified gender
         height: the user's specified height
@@ -111,14 +121,16 @@ def BMR(gender, height, weight, age):
     
     bmr2 = ((4.70 * height) + (4.35 * weight) - (4.70 * age) + 655)
 
-    yourbmr = bmr1 if gender == "Male" else bmr2 #utilizes conditional expression skill
+    yourbmr = bmr1 if gender == "Male" else bmr2
     return yourbmr
 
 def total_cal_intake(bmr, level):
     """Calculates the recommended daily caloric intake amount necessary for a user utilizing their BMR and their activity level.
+
     Args:
         bmr: Basal Metabolic Rate (BMR) of the user
         level: the average level of activity user partakes in on a weekly basis
+
     Returns:
         the recommended daily calories necessary for user based on their activity level
     """
@@ -148,15 +160,21 @@ foodcals = {}
 class Calorie_tracker:
     """Allows you to see the foods you've eaten and their calories and updates you on where you
     are at in reaching your calorie goal
+
     Args:
         food(str): What food you ate
         calories(int): the calorie count for the corresponding food
         goal(int, optional) = The amount of calories you want to have for the day, default is 2000
         done(boolean, optional): Whether you are done eating for the day, default is False meaning not 
         done
-    Returns: String of the foods and calories in the dictionary and how many more calories you need
-    to hit your goal
-    Side Effects: Prints to the console and changes global variable"""    
+
+    Returns: 
+        String of the foods and calories in the dictionary and how many more calories you need
+        to hit your goal
+
+    Side Effects: 
+        Prints to the console and changes global variable
+    """    
     def __init__(self,food, calories, goal, done = "No"):
         calories = int(calories)
         foodcalu[food] = calories
@@ -183,16 +201,18 @@ class Calorie_tracker:
             foodcals.clear()
     def most_cals(self, di):
         """Sorts the dictionary displaying in order the most to least calories for each food to give the user
-     a better perspective of where most of their calories are coming from
-     Args:
-        di(dictionary): a dictionary in the proper format
-    Returns: The input dictionary sorted by foods with the most calories first
-     """
+        a better perspective of where most of their calories are coming from
+
+        Args:
+            di(dictionary): a dictionary in the proper format
+
+        Returns: The input dictionary sorted by foods with the most calories first
+        """
         foodcals = sorted(di.items(), key=lambda x: x[1], reverse=True)
         return foodcals
 
 def get_BMI(height, weight):
-    """" A function that determines if a person is underweight to obese.
+    """ A function that determines if a person is underweight to obese.
     
     Args:
         height (int): it take a person height in inches
