@@ -33,8 +33,6 @@ mainscript.py file:
         
 
 
-
-
 user.py file:
     1. The User class initializes the following attributes:
         name of user(str)
@@ -55,6 +53,7 @@ user.py file:
 
     4. The parse_args method is used to parse the command line arguments 
     provided by the user and returns it to its appropriate attributes.
+
 
 
 functions.py file:
@@ -85,6 +84,7 @@ functions.py file:
         4. The function will print out a description based on the intensity and difficulty specified by the user.
 
 
+
     BMR function:
         1. It will utilize input data (gender, height, weight, age) from a JSON file containing user information.
 
@@ -109,6 +109,7 @@ functions.py file:
         4. The function will then return daily_cals back to the user as an integer 
 
 
+
     calorie_tracker class:
         1. Takes the calorie goal from the get_BMI and calorie_intake function and plugs it in
     
@@ -129,6 +130,7 @@ functions.py file:
         1. It takes height and weight as arguments:
             DataFrame rows of height and weight are passed as arguments & returns a BMI series 
 
+
     
     showBMI_plot function:
         1. It takes a json file path as argument
@@ -146,6 +148,7 @@ functions.py file:
         7. Then it uses seaborn to plot a colorful bar graph:  names on x-axis & bmi on y-axis.
 
 
+
 save.py file:
     new_save function:
         1. takes the name of the user, the workouts they've completed today,
@@ -161,6 +164,7 @@ save.py file:
         1. takes user name and optional date
         2. returns full file if no optional date
         3. searches for specific date and returns it if date
+
 
 
 sample_exercise_data.csv file:
