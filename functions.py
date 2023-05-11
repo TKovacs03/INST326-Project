@@ -73,7 +73,7 @@ def workout_generator(workout_type, workout_list):
     
     return workout
         
-def Workout_checkin(post_workout):
+def workout_checkin(post_workout):
     intensity, difficulty = post_workout.split(", ")
     intensity = int(intensity)
     if intensity > 5 and difficulty == "too easy":
