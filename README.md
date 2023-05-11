@@ -81,9 +81,21 @@ functions.py file:
 
 
 
-    calorie_tracker function:
+    calorie_tracker class:
+        1. Takes the calorie goal from the get_BMI and calorie_intake function and plugs it in
+    
+        2. Asks the user what food they ate, how many calories that food has, and ig they are done eating and have not reached their calorie goal
+    
+        3. Adds the food andd calories to a dictionary as a key/value pair
+    
+        4. Returns a string of each food and calories associated with that food with the amount of calories left to eat in the day, if finished shows the string and a messge to the user that they met or went over their calorie goal
+    
+        5. If you are done eating and have not met the goal prints how many calories short you were
 
+    most_cals method:
+        1. Takes the dictionary of food/calories in the calorie_tracker class
 
+        2. Replaces dictionary within class so the highest caloric foods are first for the string given bacck to the user
 
     get_BMI function:
         1. It takes hieght and weight as arguments:
