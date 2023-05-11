@@ -109,13 +109,13 @@ def BMR(gender, height, weight, age):
     """Allows for a user to have their Basal Metabolic Rate (BMR) calculated utilizing user information from User class.
 
     Args:
-        gender: the user's specified gender
-        height: the user's specified height
-        weight: the user's specified weight
-        age: the user's specified age
+        gender(str): the user's specified gender
+        height(int): the user's specified height
+        weight(int): the user's specified weight
+        age(int): the user's specified age
         
     Returns:
-        BMR based off of user's gender, weight, height, and age
+        yourbmr(int) = BMR of user based on user's gender, weight, height, and age
     """
     bmr1 = ((12.70 * height) + (6.23 * weight) - (6.80 * age) + 66)
     
@@ -128,8 +128,8 @@ def total_cal_intake(bmr, level):
     """Calculates the recommended daily caloric intake amount necessary for a user utilizing their BMR and their activity level.
 
     Args:
-        bmr: Basal Metabolic Rate (BMR) of the user
-        level: the average level of activity user partakes in on a weekly basis
+        bmr(int): Basal Metabolic Rate (BMR) of the user
+        level(str): the average level of activity user partakes in on a weekly basis
 
     Returns:
         the recommended daily calories necessary for user based on their activity level
