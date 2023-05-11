@@ -43,15 +43,15 @@ user.py file:
         active level of user is either "Little/None",
         "Light","Moderate","High","Extreme"(str)
 
-    2. Repr method is used to return the formal string representation of 
+    2. __repr__ method: is used to return the formal string representation of 
     the attributes.
 
-    3. The user_information method opens a JSON file and loads the information 
+    3. user_information method: opens a json file and loads the information 
     provided by the user. It prints out the welcome message and repeats the 
     users information for final verification. The information is saved in a 
-    dictionary in a JSON file and uses the users name as a key. 
+    dictionary in a json file and uses the users name as a key. 
 
-    4. The parse_args method is used to parse the command line arguments 
+    4. The parse_args method: is used to parse the command line arguments 
     provided by the user and returns it to its appropriate attributes.
 
 
@@ -129,6 +129,8 @@ functions.py file:
     get_BMI function:
         1. It takes height and weight as arguments:
             DataFrame rows of height and weight are passed as arguments & returns a BMI series 
+        
+        2. The function uses a standard formula to generate body mass index(BMI) of the user and returns it to the caller
 
 
     
@@ -143,7 +145,7 @@ functions.py file:
 
         5. It calls the get_BMI funtion to create a new column (bmi) using pandas apply method.
 
-        6. It first prints the users body mass index records
+        6. It first prints users body mass index on records
 
         7. Then it uses seaborn to plot a colorful bar graph:  names on x-axis & bmi on y-axis.
 
