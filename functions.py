@@ -73,7 +73,26 @@ def workout_generator(workout_type, workout_list):
     
     return workout
         
+def Workout_checkin(post_workout):
+    intensity, difficulty = post_workout.split(", ")
+    intensity = int(intensity)
+    if intensity > 5 and difficulty == "too easy":
+        print("Increase weight by 5lbs or raise intensity (you choose)")
+    
+    if intensity > 5 and difficulty == "too hard":
+        print("Decrease weight by 5lbs or lower intensity (you choose)")
 
+    if intensity > 5 and difficulty == "just right":
+        print("Continue with current weight and intensity until too easy")
+
+    if intensity < 6 and difficulty == "too easy":
+        print("Increase weight by 5lbs or raise intensity (you choose)")
+
+    if intensity < 6 and difficulty == "too hard":
+        print("Decrease weight by 5lbs or lower intensity (you choose)")
+
+    if intensity < 6 and difficulty == "just right":
+        print("Continue with current weight and intensity until too easy")
 
 # BMR Calculation function and Total Calorie Intake function
 
@@ -229,5 +248,4 @@ def showBMI_plot(jsonpath):
     print(f"\n{new_df}")
     plt.show()
   
-    
     
