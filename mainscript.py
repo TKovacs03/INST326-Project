@@ -27,7 +27,7 @@ def main(user):
             post_workout = input("Post workout check-in.\n"
                                  "Enter in format: how intense was your workout (on a scale from 1-10), " 
                                  "difficulty [too easy, too hard, just right]\n")
-            functions.Workout_checkin(post_workout)
+            functions.workout_checkin(post_workout)
 
         elif choice == 'track calories':
                 bmr = functions.BMR(user.gender, user.height, user.weight, user.age)
