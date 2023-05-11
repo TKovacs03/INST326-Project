@@ -72,13 +72,41 @@ functions.py file:
         5. It also gives a description of the various workout that the user might perform.
 
 
+
+    workout_checkin function:
+        1. The user will be asked to state the intensity and difficulty at which they felt their workout was performed for
+           which the user will answer with their intensity score as a number from 1-10, followed by a comma, and then their difficulty [too easy, too hard, just right].
+
+        2. The function will use sequence unpacking to store the user's answers into the variables "intensity" and "difficulty".
+
+        3. Based on the user's answers, it will perform various if statements to determine what the user should proceed doing for
+           future workouts based on the intensity and difficulty.
+
+        4. The function will print out a description based on the intensity and difficulty specified by the user.
+
+
     BMR function:
+        1. It will utilize input data (gender, height, weight, age) from a JSON file containing user information.
 
+        2. The user's information will be utilized within a formula used to calculate the user's Basal Metabolic Rate (BMR).
 
+        3. There are two formula options, one for male (bmr1) and another for female (bmr2), and the function will utilize a
+           conditional expression to determine which formula to use.
+
+        4. The user information pertaining to each parameter in the formula will be plugged into the formula and the function will
+           then calculate and return user's BMR as the variable, "yourbmr".
 
 
     total_cal_intake function:
+        1. The function will use two arguments, the user's calculated bmr (bmr) and activity level (level).
 
+        2. The function takes the activity level stated by the user and checks to see if it matches the level for one of the
+           if statements.
+
+        3. Once determined, the bmr will be multiplied by a set number in order to calculate the number of
+           calories they need to intake; the calculation will be set to the variable "daily_cals"
+
+        4. The function will then return daily_cals back to the user as an integer 
 
 
     calorie_tracker class:
@@ -86,7 +114,7 @@ functions.py file:
     
         2. Asks the user what food they ate, how many calories that food has, and ig they are done eating and have not reached their calorie goal
     
-        3. Adds the food andd calories to a dictionary as a key/value pair
+        3. Adds the food and calories to a dictionary as a key/value pair
     
         4. Returns a string of each food and calories associated with that food with the amount of calories left to eat in the day, if finished shows the string and a messge to the user that they met or went over their calorie goal
     
@@ -98,7 +126,7 @@ functions.py file:
         2. Replaces dictionary within class so the highest caloric foods are first for the string given bacck to the user
 
     get_BMI function:
-        1. It takes hieght and weight as arguments:
+        1. It takes height and weight as arguments:
             DataFrame rows of height and weight are passed as arguments & returns a BMI series 
 
     
